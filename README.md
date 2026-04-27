@@ -1,4 +1,4 @@
-# Aegis-IAM Dashboard (Cyber-Security HUD)
+# Aegis-IAM Dashboard (Cyber-Security)
 
 High-end IAM Privilege Escalation Detection + Risk Analysis dashboard.
 
