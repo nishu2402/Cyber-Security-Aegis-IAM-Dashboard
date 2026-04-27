@@ -1,0 +1,89 @@
+{
+  "users": [
+    {
+      "name": "intern_user",
+      "roles": [
+        "support_staff"
+      ]
+    },
+    {
+      "name": "dev_user",
+      "roles": [
+        "junior_dev"
+      ]
+    },
+    {
+      "name": "ops_user",
+      "roles": [
+        "dev_ops"
+      ]
+    },
+    {
+      "name": "risk_user",
+      "roles": [
+        "identity_manager",
+        "security_auditor"
+      ]
+    }
+  ],
+  "roles": {
+    "support_staff": {
+      "permissions": [
+        "view_tickets"
+      ],
+      "inherits": [
+        "group_editor"
+      ]
+    },
+    "group_editor": {
+      "permissions": [
+        "modify_groups"
+      ],
+      "inherits": [
+        "identity_manager"
+      ]
+    },
+    "identity_manager": {
+      "permissions": [
+        "assign_roles"
+      ],
+      "inherits": [
+        "admin"
+      ]
+    },
+    "junior_dev": {
+      "permissions": [
+        "read_code"
+      ],
+      "inherits": [
+        "dev_team"
+      ]
+    },
+    "dev_team": {
+      "permissions": [
+        "deploy_app"
+      ],
+      "inherits": []
+    },
+    "dev_ops": {
+      "permissions": [
+        "reset_passwords"
+      ],
+      "inherits": [
+        "identity_manager"
+      ]
+    },
+    "security_auditor": {
+      "permissions": [
+        "audit_roles"
+      ],
+      "inherits": []
+    },
+    "admin": {
+      "permissions": [
+        "full_access"
+      ],
+      "inherits": []
+    }
+  }
+}
