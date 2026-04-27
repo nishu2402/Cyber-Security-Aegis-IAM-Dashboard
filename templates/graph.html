@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="top">
+    <div class="brand">
+      <h1>Graph View</h1>
+      <div class="sub">
+        Visual model of principals, roles, and assume-role trust edges.<br/>
+        <b>Dataset:</b> {{ state.dataset_name }}
+      </div>
+    </div>
+    <div class="btnRow">
+      <a class="btn" href="{{ url_for('home') }}">Back</a>
+    </div>
+  </div>
+
+  <div class="panel" style="margin-top:16px;">
+    <div class="head">
+      <h2>IAM Relationship Graph</h2>
+      <div style="color: var(--muted); font-size:12px;">Hover nodes for details • Scroll to zoom • Drag to pan</div>
+    </div>
+    <div class="body">
+      {% if not state.has_data %}
+        <div style="color: var(--muted);">Awaiting data. Upload JSON or initialize simulation.</div>
+      {% else %}
+        <div id="net" style="height:72vh; border-radius:16px; border:1px solid rgba(0,245,255,0.16); background: rgba(0,0,0,0.30);"></div>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+<script>
+  {% if state.has_data %}
+    const payload = {{ graph_payload|safe }};
+
+    const nodes = new vis.DataSet(payload.nodes.map(n => {
+      if (n.group === "user") {
+        return { ...n, shape: "box", color: { background: "rgba(0,245,255,0.12)", border: "rgba(0,245,255,0.55)" } };
+      }
+      if (n.group === "role") {
+        return { ...n, shape: "ellipse", color: { background: "rgba(255,176,32,0.10)", border: "rgba(255,176,32,0.55)" } };
+      }
+      return { ...n, shape: "diamond", color: { background: "rgba(255,53,94,0.10)", border: "rgba(255,53,94,0.55)" } };
+    }));
+
+    const edges = new vis.DataSet(payload.edges.map(e => ({
+      ...e,
+      font: { size: 16, color: "rgba(230,255,255,0.92)", strokeWidth: 3, strokeColor: "rgba(0,0,0,0.38)" },
+      color: { color: "rgba(0,245,255,0.40)" }
+    })));
+
+    const options = {
+      interaction: { hover: true, tooltipDelay: 60 },
+      nodes: { font: { color: "rgba(230,255,255,0.98)", size: 18, face: "Inter" }, margin: 14, borderWidth: 2 },
+      edges: { arrows: { to: { enabled: true, scaleFactor: 0.85 } }, smooth: { type: "dynamic" } },
+      physics: { stabilization: { iterations: 140 }, barnesHut: { gravitationalConstant: -12000, springLength: 200 } }
+    };
+
+    new vis.Network(document.getElementById("net"), { nodes, edges }, options);
+  {% endif %}
+</script>
+{% endblock %}
