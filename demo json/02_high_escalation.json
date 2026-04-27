@@ -1,0 +1,46 @@
+{
+  "users": [
+    {
+      "name": "contractor",
+      "roles": [
+        "role_assigner"
+      ]
+    },
+    {
+      "name": "helpdesk",
+      "roles": [
+        "helpdesk_l1"
+      ]
+    }
+  ],
+  "roles": {
+    "helpdesk_l1": {
+      "permissions": [
+        "view_tickets"
+      ],
+      "inherits": [
+        "helpdesk_l2"
+      ]
+    },
+    "helpdesk_l2": {
+      "permissions": [
+        "reset_passwords"
+      ],
+      "inherits": []
+    },
+    "role_assigner": {
+      "permissions": [
+        "assign_roles"
+      ],
+      "inherits": [
+        "admin"
+      ]
+    },
+    "admin": {
+      "permissions": [
+        "full_access"
+      ],
+      "inherits": []
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "users": [
+    {
+      "name": "temp_user",
+      "roles": [
+        "role_a"
+      ]
+    }
+  ],
+  "roles": {
+    "role_a": {
+      "permissions": [
+        "p1"
+      ],
+      "inherits": [
+        "role_b"
+      ]
+    },
+    "role_b": {
+      "permissions": [
+        "p2"
+      ],
+      "inherits": [
+        "role_c"
+      ]
+    },
+    "role_c": {
+      "permissions": [
+        "modify_groups"
+      ],
+      "inherits": [
+        "role_d"
+      ]
+    },
+    "role_d": {
+      "permissions": [
+        "p4"
+      ],
+      "inherits": [
+        "role_e"
+      ]
+    },
+    "role_e": {
+      "permissions": [
+        "assign_roles"
+      ],
+      "inherits": [
+        "admin"
+      ]
+    },
+    "admin": {
+      "permissions": [
+        "full_access"
+      ],
+      "inherits": []
+    }
+  }
+}

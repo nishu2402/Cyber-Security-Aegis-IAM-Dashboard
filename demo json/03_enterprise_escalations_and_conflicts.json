@@ -1,0 +1,92 @@
+{
+  "users": [
+    {
+      "name": "alice",
+      "roles": [
+        "support_staff"
+      ]
+    },
+    {
+      "name": "bob",
+      "roles": [
+        "dev_ops"
+      ]
+    },
+    {
+      "name": "carol",
+      "roles": [
+        "support_engineer"
+      ]
+    },
+    {
+      "name": "david",
+      "roles": [
+        "identity_manager",
+        "security_auditor"
+      ]
+    }
+  ],
+  "roles": {
+    "support_staff": {
+      "permissions": [
+        "view_tickets"
+      ],
+      "inherits": [
+        "group_editor"
+      ]
+    },
+    "group_editor": {
+      "permissions": [
+        "modify_groups"
+      ],
+      "inherits": [
+        "identity_manager"
+      ]
+    },
+    "identity_manager": {
+      "permissions": [
+        "assign_roles"
+      ],
+      "inherits": [
+        "admin"
+      ]
+    },
+    "dev_ops": {
+      "permissions": [
+        "deploy_app",
+        "reset_passwords"
+      ],
+      "inherits": [
+        "cloud_operator"
+      ]
+    },
+    "cloud_operator": {
+      "permissions": [
+        "modify_groups"
+      ],
+      "inherits": [
+        "identity_manager"
+      ]
+    },
+    "support_engineer": {
+      "permissions": [
+        "view_logs"
+      ],
+      "inherits": [
+        "identity_manager"
+      ]
+    },
+    "security_auditor": {
+      "permissions": [
+        "audit_roles"
+      ],
+      "inherits": []
+    },
+    "admin": {
+      "permissions": [
+        "full_access"
+      ],
+      "inherits": []
+    }
+  }
+}
