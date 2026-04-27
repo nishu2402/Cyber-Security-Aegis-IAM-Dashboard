@@ -1,0 +1,38 @@
+{
+  "sts:AssumeRole": {
+    "technique": "Valid Accounts",
+    "id": "T1078",
+    "tactic": "Privilege Escalation / Persistence",
+    "note": "Assuming roles to gain elevated permissions."
+  },
+  "iam:PassRole": {
+    "technique": "Account Manipulation",
+    "id": "T1098",
+    "tactic": "Privilege Escalation",
+    "note": "Passing roles to services to obtain permissions."
+  },
+  "iam:AttachUserPolicy": {
+    "technique": "Account Manipulation",
+    "id": "T1098",
+    "tactic": "Privilege Escalation",
+    "note": "Attaching policies to escalate privileges."
+  },
+  "iam:PutUserPolicy": {
+    "technique": "Account Manipulation",
+    "id": "T1098",
+    "tactic": "Privilege Escalation",
+    "note": "Inline policy injection to elevate access."
+  },
+  "*": {
+    "technique": "Privilege Escalation",
+    "id": "TA0004",
+    "tactic": "Privilege Escalation",
+    "note": "Wildcard permissions grant broad control."
+  },
+  "iam:*": {
+    "technique": "Privilege Escalation",
+    "id": "TA0004",
+    "tactic": "Privilege Escalation",
+    "note": "Full IAM permissions enable escalation and persistence."
+  }
+}

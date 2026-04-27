@@ -1,125 +1,37 @@
-# 🛡️ Aegis-IAM Dashboard
+# Aegis-IAM Dashboard (Cyber-Security HUD)
 
-### Privilege Escalation Detection & IAM Risk Intelligence Platform
+High-end IAM Privilege Escalation Detection + Risk Analysis dashboard.
 
-Aegis-IAM Dashboard is a production-ready IAM (Identity & Access
-Management) risk analysis tool designed to detect privilege escalation
-paths, over-privileged identities, and separation-of-duties conflicts
-from real-world cloud exports.
+## Features
+- **Awaiting Data** startup (no auto demo)
+- Manual **Initialize Simulation** button (loads demo dataset)
+- Robust JSON ingestion:
+  - Simple schema: `users/roles/permissions/inherits`
+  - AWS IAM: `aws iam get-account-authorization-details`
+- Privilege escalation path discovery (graph traversal)
+- Dynamic remediation playbook per finding
+- One-click PDF export (client-side html2pdf)
 
-------------------------------------------------------------------------
-
-## 🚀 Features
-
-### 🔹 Real-World JSON Ingestion
-
--   Starts in **Awaiting Data** mode (no auto demo)
--   Manual **Initialize Simulation** button
--   Supports:
-    -   Simple IAM schema (users / roles / permissions / inherits)
-    -   AWS IAM `get-account-authorization-details` JSON export
--   Handles nested policy structures and wildcards safely
-
-------------------------------------------------------------------------
-
-### 🔹 Privilege Escalation Detection
-
--   Graph-based escalation path discovery (NetworkX)
--   Detects assume-role abuse and wildcard permissions
--   Severity classification (Critical / High / Medium / Low)
-
-------------------------------------------------------------------------
-
-### 🔹 Dynamic Remediation Playbooks
-
-For every detected risk: 1. Technical Root Cause\
-2. Step-by-Step CLI Patch Commands\
-3. Real-World Resolution Strategy
-
-------------------------------------------------------------------------
-
-### 🔹 Intelligence Report Generation
-
--   **Vector PDF Export (ReportLab)** -- Crisp, professional output\
--   **Client-Side PDF Export (html2pdf)** -- Quick browser export
-
-------------------------------------------------------------------------
-
-### 🔹 MITRE ATT&CK Mapping
-
-Detected risky permissions are mapped to: - Technique ID - Tactic -
-Description
-
-------------------------------------------------------------------------
-
-## 🏗️ Project Structure
-
-    aegis-iam-dashboard/
-    │
-    ├── app.py
-    ├── requirements.txt
-    ├── mitre_map.json
-    ├── README.md
-    │
-    ├── data/
-    │   └── demo_aws_auth_details.json
-    │
-    ├── uploads/
-    │
-    ├── static/
-    │   ├── css/
-    │   │   └── hud.css
-    │   └── js/
-    │       └── hud.js
-    │
-    └── templates/
-        ├── base.html
-        ├── index.html
-        ├── graph.html
-        ├── playbook.html
-        └── intel_lab.html
-
-------------------------------------------------------------------------
-
-## ⚙️ Installation
-
-``` bash
-python3 -m venv venv
-# Windows:
-venv\Scripts\activate
-# Mac/Linux:
-source venv/bin/activate
-
+## Run
+```bash
+python -m venv venv
+# Windows: venv\Scripts\activate
+# Mac/Linux: source venv/bin/activate
 pip install -r requirements.txt
 python app.py
 ```
-
 Open: http://127.0.0.1:5000
 
-------------------------------------------------------------------------
-
-## ☁️ AWS IAM Export Example
-
-``` bash
+## AWS Export (Real World)
+```bash
 aws configure
 aws iam get-account-authorization-details --output json > iam_auth.json
 ```
+Upload `iam_auth.json` in the dashboard.
 
-Upload `iam_auth.json` into the dashboard.
+## Security Notes
+- Uploaded JSON is parsed only (no code execution).
+- File size limited to 2MB.
+- Use only in authorized environments.
 
-------------------------------------------------------------------------
-
-## 🛡️ Security Notes
-
--   No use of eval or unsafe execution
--   Upload size limit enforced
--   OWASP-aligned security headers
--   Intended for authorized environments only
-
-------------------------------------------------------------------------
-
-## 👤 Author
-
-Owned and Developed by\
-**Nisarg Chasmawala (Shroff)**\
-© 2026 All Rights Reserved.
+Owned and Developed by Nisarg Chasmawala (Shroff). © 2026 All Rights Reserved.
