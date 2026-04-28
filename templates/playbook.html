@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% block content %}
+
+  <section class="rounded-3xl border border-cyan-500/30 bg-cyber-panel backdrop-blur-xl
+                  shadow-glow-cyan overflow-hidden">
+    <div class="px-6 sm:px-10 py-7">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <div class="font-mono text-[10px] uppercase tracking-[0.4em] text-cyan-300/70">module &middot; remediation</div>
+          <h1 class="font-display font-black uppercase tracking-[0.18em] text-2xl sm:text-3xl
+                     bg-gradient-to-r from-cyan-300 via-cyan-200 to-cyan-400
+                     bg-clip-text text-transparent mt-1">
+            Dynamic Playbook
+          </h1>
+          <p class="mt-2 text-sm text-cyan-50/70 max-w-2xl">
+            Root cause + step-by-step patching commands generated from the uploaded JSON findings.
+            <span class="text-cyan-200">Dataset:</span> {{ state.dataset_name }}
+          </p>
+        </div>
+        <a href="{{ url_for('home') }}" class="aegis-btn">← Back to HUD</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-6 rounded-3xl border border-cyan-500/30 bg-cyber-panel backdrop-blur-xl
+                  shadow-glow-cyan overflow-hidden">
+    <header class="px-5 py-4 border-b border-cyan-500/20 bg-black/20">
+      <h2 class="font-display font-bold uppercase tracking-widest text-cyan-100 text-sm">
+        Remediation Playbooks (Per Finding)
+      </h2>
+    </header>
+
+    <div class="p-5 space-y-5">
+      {% if not state.has_data %}
+        <div class="text-cyan-50/60 text-sm py-10 text-center">
+          Awaiting data. Upload JSON or initialize simulation from the main HUD.
+        </div>
+      {% elif findings|length == 0 %}
+        <div class="text-cyan-50/60 text-sm py-10 text-center">
+          No escalation findings to generate playbooks for.
+        </div>
+      {% else %}
+        {% for f in findings %}
+          <article class="rounded-2xl border border-cyan-500/25 bg-black/30 overflow-hidden">
+            <header class="flex flex-col sm:flex-row sm:items-center justify-between gap-2
+                           px-5 py-3 border-b border-cyan-500/20 bg-black/30">
+              <h3 class="font-display font-bold uppercase tracking-widest text-cyan-100 text-sm">
+                {{ f.principal }} — {{ f.severity }}
+              </h3>
+              <div class="font-mono text-[11px] text-cyan-50/60">{{ f.entry }}</div>
+            </header>
+
+            <div class="p-5">
+              <div class="font-mono text-xs px-3 py-2 rounded-lg border border-cyan-500/20
+                          bg-black/40 text-cyan-100/90 break-words mb-4">
+                {{ f.chain }}
+              </div>
+
+              <div class="font-display font-bold uppercase tracking-widest text-cyan-200 text-xs">
+                1) Technical Root Cause
+              </div>
+              <p class="mt-1 text-sm text-cyan-50/80 leading-relaxed">{{ f.root_cause }}</p>
+
+              <div class="font-display font-bold uppercase tracking-widest text-cyan-200 text-xs mt-5">
+                2) Step-by-Step Patching Guide (CLI)
+              </div>
+              <ol class="mt-2 space-y-2">
+                {% for step in f.patch_steps %}
+                  <li class="flex items-start gap-3">
+                    <span class="font-mono text-[10px] text-cyan-300 px-2 py-1 rounded
+                                 border border-cyan-500/30 bg-black/40">{{ loop.index }}</span>
+                    <code class="flex-1 font-mono text-xs px-3 py-2 rounded-lg border border-cyan-500/20
+                                  bg-black/40 text-cyan-100/90 break-all">{{ step }}</code>
+                  </li>
+                {% endfor %}
+              </ol>
+
+              <div class="font-display font-bold uppercase tracking-widest text-cyan-200 text-xs mt-5">
+                3) Real-World Resolution Strategy
+              </div>
+              <ul class="mt-2 space-y-1.5">
+                {% for s in f.strategy %}
+                  <li class="flex items-start gap-2 text-sm text-cyan-50/80">
+                    <span class="font-mono text-cyan-300 mt-px">▸</span>
+                    <span>{{ s }}</span>
+                  </li>
+                {% endfor %}
+              </ul>
+
+              {% if f.mitre|length > 0 %}
+                <div class="font-display font-bold uppercase tracking-widest text-cyan-200 text-xs mt-5">
+                  4) MITRE ATT&CK Context
+                </div>
+                <div class="mt-2 flex flex-wrap gap-2">
+                  {% for t in f.mitre %}
+                    <span class="aegis-mitre-badge" title="{{ t.tactic }} — {{ t.note }}">
+                      <span class="font-bold text-cyber-cyan">{{ t.id }}</span>
+                      <span class="text-cyan-100">{{ t.technique }}</span>
+                      <span class="text-cyan-50/50 font-mono text-[10px] ml-1">{{ t.permission }}</span>
+                    </span>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+          </article>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </section>
+
+{% endblock %}

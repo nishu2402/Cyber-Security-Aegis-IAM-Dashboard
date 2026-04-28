@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% block content %}
+
+  <section class="rounded-3xl border border-cyan-500/30 bg-cyber-panel backdrop-blur-xl
+                  shadow-glow-cyan overflow-hidden">
+    <div class="px-6 sm:px-10 py-7">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <div class="font-mono text-[10px] uppercase tracking-[0.4em] text-cyan-300/70">module &middot; intel</div>
+          <h1 class="font-display font-black uppercase tracking-[0.18em] text-2xl sm:text-3xl
+                     bg-gradient-to-r from-cyan-300 via-cyan-200 to-cyan-400
+                     bg-clip-text text-transparent mt-1">
+            Intel Retrieval Lab
+          </h1>
+          <p class="mt-2 text-sm text-cyan-50/70 max-w-2xl">
+            How to export real-world IAM JSON for analysis (AWS / Azure / GCP).
+            <span class="text-cyber-amber font-semibold">Use only in authorized environments.</span>
+          </p>
+        </div>
+        <a href="{{ url_for('home') }}" class="aegis-btn">← Back to HUD</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- AWS -->
+  <section class="mt-6 rounded-3xl border border-cyan-500/30 bg-cyber-panel backdrop-blur-xl
+                  shadow-glow-cyan overflow-hidden">
+    <header class="px-5 py-4 border-b border-cyan-500/20 bg-black/20">
+      <div class="font-mono text-[10px] uppercase tracking-[0.4em] text-cyan-300/70">target &middot; aws</div>
+      <h2 class="font-display font-bold uppercase tracking-widest text-cyan-100 text-sm mt-1">
+        AWS (Recommended)
+      </h2>
+    </header>
+    <div class="p-5 space-y-3 text-sm text-cyan-50/80">
+      <ol class="space-y-3">
+        <li>
+          Install &amp; configure AWS CLI:
+          <code class="block mt-2 font-mono text-xs px-3 py-2 rounded-lg border border-cyan-500/20 bg-black/40 text-cyan-100/90">aws configure</code>
+        </li>
+        <li>
+          Export IAM authorization details:
+          <code class="block mt-2 font-mono text-xs px-3 py-2 rounded-lg border border-cyan-500/20 bg-black/40 text-cyan-100/90 break-all">aws iam get-account-authorization-details --output json &gt; iam_auth.json</code>
+        </li>
+        <li>
+          Optional — export credential report:
+          <code class="block mt-2 font-mono text-xs px-3 py-2 rounded-lg border border-cyan-500/20 bg-black/40 text-cyan-100/90 break-all">aws iam generate-credential-report &amp;&amp; aws iam get-credential-report --query Content --output text | base64 -d &gt; credential_report.csv</code>
+        </li>
+        <li>
+          Upload <span class="font-mono text-xs px-2 py-0.5 rounded border border-cyan-500/30 bg-black/40 text-cyan-200">iam_auth.json</span> into Aegis-IAM.
+        </li>
+      </ol>
+      <div class="mt-4 rounded-xl border border-cyan-500/20 bg-black/30 p-4">
+        <span class="font-bold text-cyan-200">Tip:</span>
+        If your org uses Organizations, also evaluate SCPs:
+        <code class="block mt-2 font-mono text-xs px-3 py-2 rounded-lg border border-cyan-500/20 bg-black/40 text-cyan-100/90 break-all">aws organizations list-policies --filter SERVICE_CONTROL_POLICY</code>
+      </div>
+    </div>
+  </section>
+
+  <!-- Azure -->
+  <section class="mt-6 rounded-3xl border border-cyan-500/30 bg-cyber-panel backdrop-blur-xl
+                  shadow-glow-cyan overflow-hidden">
+    <header class="px-5 py-4 border-b border-cyan-500/20 bg-black/20">
+      <div class="font-mono text-[10px] uppercase tracking-[0.4em] text-cyan-300/70">target &middot; azure</div>
+      <h2 class="font-display font-bold uppercase tracking-widest text-cyan-100 text-sm mt-1">
+        Azure (Entra ID / RBAC)
+      </h2>
+    </header>
+    <div class="p-5 text-sm text-cyan-50/80">
+      <ol class="space-y-3">
+        <li>Login: <code class="block mt-2 font-mono text-xs px-3 py-2 rounded-lg border border-cyan-500/20 bg-black/40 text-cyan-100/90">az login</code></li>
+        <li>Export role assignments: <code class="block mt-2 font-mono text-xs px-3 py-2 rounded-lg border border-cyan-500/20 bg-black/40 text-cyan-100/90 break-all">az role assignment list --all --output json &gt; azure_role_assignments.json</code></li>
+        <li>Export role definitions: <code class="block mt-2 font-mono text-xs px-3 py-2 rounded-lg border border-cyan-500/20 bg-black/40 text-cyan-100/90 break-all">az role definition list --output json &gt; azure_role_definitions.json</code></li>
+        <li>Upload into Aegis-IAM (adapter support can be added).</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- GCP -->
+  <section class="mt-6 rounded-3xl border border-cyan-500/30 bg-cyber-panel backdrop-blur-xl
+                  shadow-glow-cyan overflow-hidden">
+    <header class="px-5 py-4 border-b border-cyan-500/20 bg-black/20">
+      <div class="font-mono text-[10px] uppercase tracking-[0.4em] text-cyan-300/70">target &middot; gcp</div>
+      <h2 class="font-display font-bold uppercase tracking-widest text-cyan-100 text-sm mt-1">
+        GCP (IAM)
+      </h2>
+    </header>
+    <div class="p-5 text-sm text-cyan-50/80">
+      <ol class="space-y-3">
+        <li>Login: <code class="block mt-2 font-mono text-xs px-3 py-2 rounded-lg border border-cyan-500/20 bg-black/40 text-cyan-100/90">gcloud auth login</code></li>
+        <li>Export project IAM policy: <code class="block mt-2 font-mono text-xs px-3 py-2 rounded-lg border border-cyan-500/20 bg-black/40 text-cyan-100/90 break-all">gcloud projects get-iam-policy YOUR_PROJECT_ID --format=json &gt; gcp_iam_policy.json</code></li>
+      </ol>
+    </div>
+  </section>
+
+{% endblock %}

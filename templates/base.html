@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta name="theme-color" content="#05070d"/>
+  <title>{{ title or "Aegis-IAM Dashboard" }}</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind via CDN — production-ready, no build step -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cyber: {
+              bg:    '#05070d',
+              panel: 'rgba(8, 18, 32, 0.55)',
+              cyan:  '#00F5FF',
+              amber: '#FFB020',
+              red:   '#FF355E',
+              green: '#32FF7E',
+              violet:'#9D4EDD',
+            }
+          },
+          fontFamily: {
+            display: ['Orbitron', 'system-ui', 'sans-serif'],
+            mono:    ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+            sans:    ['Inter', 'system-ui', 'sans-serif'],
+          },
+          boxShadow: {
+            'glow-cyan':  '0 0 20px rgba(0, 245, 255, 0.35), inset 0 0 20px rgba(0, 245, 255, 0.06)',
+            'glow-red':   '0 0 24px rgba(255, 53, 94, 0.45), inset 0 0 22px rgba(255, 53, 94, 0.08)',
+            'glow-amber': '0 0 20px rgba(255, 176, 32, 0.35), inset 0 0 18px rgba(255, 176, 32, 0.06)',
+            'glow-green': '0 0 18px rgba(50, 255, 126, 0.35)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/hud.css') }}">
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body class="bg-cyber-bg text-cyan-50 antialiased font-sans min-h-screen">
+
+  <!-- Animated particle field -->
+  <canvas id="aegisParticles" class="aegis-particles" aria-hidden="true"></canvas>
+
+  <!-- Atmospheric grid + radial glows -->
+  <div class="aegis-bg" aria-hidden="true"></div>
+
+  <!-- Top navigation rail -->
+  <div class="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-5">
+    <div class="flex items-center justify-between gap-3 flex-wrap">
+      <div class="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.4em] text-cyan-300/70">
+        <span class="inline-block h-1.5 w-1.5 rounded-full bg-cyber-cyan shadow-glow-cyan animate-pulse"></span>
+        Aegis-IAM
+        <span class="text-cyan-50/30 mx-1">/</span>
+        <span class="text-cyan-50/60">{{ title or "Dashboard" }}</span>
+      </div>
+      <button id="aegisCmdKBtn" type="button" class="aegis-cmdk-trigger" title="Command Palette (Ctrl/Cmd + K)">
+        <svg viewBox="0 0 24 24" class="h-3.5 w-3.5 fill-none stroke-current stroke-2">
+          <circle cx="11" cy="11" r="7" stroke-linecap="round"/>
+          <path d="m20 20-3.5-3.5" stroke-linecap="round"/>
+        </svg>
+        <span class="font-mono text-[10px] uppercase tracking-widest">Quick Nav</span>
+        <kbd class="aegis-kbd">Ctrl</kbd>
+        <kbd class="aegis-kbd">K</kbd>
+      </button>
+    </div>
+  </div>
+
+  <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-10">
+    {% block content %}{% endblock %}
+
+    <footer class="mt-10 rounded-2xl border border-cyan-500/30 bg-cyber-panel backdrop-blur-lg
+                   shadow-glow-cyan px-6 py-5 text-center">
+      <div class="font-mono text-[11px] uppercase tracking-[0.32em] text-cyan-300/70 mb-2">
+        // Aegis-IAM // Sentinel Build
+      </div>
+      <p class="text-sm text-cyan-50/80 leading-relaxed">
+        Owned and Developed by
+        <span class="font-semibold text-cyan-300">Nisarg Chasmawala (Shroff)</span>,
+        <span class="font-semibold text-cyan-300">Jatin Kumar</span>, and
+        <span class="font-semibold text-cyan-300">Santhakumar Parivalla</span>.
+        <span class="text-cyan-50/60">© 2026 All Rights Reserved.</span>
+      </p>
+    </footer>
+  </main>
+
+  <!-- ===== GLOBAL OVERLAYS ===== -->
+
+  <!-- Toast stack -->
+  <div id="aegisToasts" class="aegis-toast-stack" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Detail drawer -->
+  <div id="aegisDrawer" class="aegis-drawer" aria-hidden="true">
+    <div class="aegis-drawer-backdrop" data-drawer-close></div>
+    <aside class="aegis-drawer-panel" role="dialog" aria-modal="true" aria-labelledby="aegisDrawerTitle">
+      <header class="aegis-drawer-head">
+        <div>
+          <div id="aegisDrawerEyebrow" class="font-mono text-[10px] uppercase tracking-[0.4em] text-cyan-300/70"></div>
+          <h3 id="aegisDrawerTitle" class="font-display font-bold uppercase tracking-widest text-cyan-100 text-base"></h3>
+        </div>
+        <button type="button" class="aegis-drawer-close" data-drawer-close aria-label="Close detail drawer">
+          <svg viewBox="0 0 24 24" class="h-4 w-4 fill-none stroke-current stroke-2">
+            <path d="M6 6l12 12M18 6l-12 12" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </header>
+      <div id="aegisDrawerBody" class="aegis-drawer-body"></div>
+    </aside>
+  </div>
+
+  <!-- Command Palette -->
+  <div id="aegisPalette" class="aegis-palette" aria-hidden="true">
+    <div class="aegis-palette-backdrop" data-palette-close></div>
+    <div class="aegis-palette-panel" role="dialog" aria-modal="true" aria-label="Command Palette">
+      <div class="aegis-palette-search">
+        <svg viewBox="0 0 24 24" class="h-4 w-4 text-cyan-300 fill-none stroke-current stroke-2">
+          <circle cx="11" cy="11" r="7" stroke-linecap="round"/>
+          <path d="m20 20-3.5-3.5" stroke-linecap="round"/>
+        </svg>
+        <input id="aegisPaletteInput" type="text" autocomplete="off"
+               placeholder="Jump to module, run command, or search findings..." />
+        <kbd class="aegis-kbd">ESC</kbd>
+      </div>
+      <ul id="aegisPaletteList" class="aegis-palette-list" role="listbox"></ul>
+      <div class="aegis-palette-foot">
+        <span><kbd class="aegis-kbd">↑</kbd><kbd class="aegis-kbd">↓</kbd> navigate</span>
+        <span><kbd class="aegis-kbd">↵</kbd> open</span>
+        <span><kbd class="aegis-kbd">ESC</kbd> close</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/hud.js') }}"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% block content %}
+
+  <section class="rounded-3xl border border-cyan-500/30 bg-cyber-panel backdrop-blur-xl
+                  shadow-glow-cyan overflow-hidden">
+    <div class="px-6 sm:px-10 py-7">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <div class="font-mono text-[10px] uppercase tracking-[0.4em] text-cyan-300/70">module &middot; topology</div>
+          <h1 class="font-display font-black uppercase tracking-[0.18em] text-2xl sm:text-3xl
+                     bg-gradient-to-r from-cyan-300 via-cyan-200 to-cyan-400
+                     bg-clip-text text-transparent mt-1">
+            Graph View
+          </h1>
+          <p class="mt-2 text-sm text-cyan-50/70 max-w-2xl">
+            Visual model of principals, roles, and assume-role trust edges.
+            <span class="text-cyan-200">Dataset:</span> {{ state.dataset_name }}
+          </p>
+        </div>
+        <a href="{{ url_for('home') }}" class="aegis-btn">← Back to HUD</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-6 rounded-3xl border border-cyan-500/30 bg-cyber-panel backdrop-blur-xl
+                  shadow-glow-cyan overflow-hidden">
+    <header class="flex flex-col sm:flex-row sm:items-center justify-between gap-3
+                   px-5 py-4 border-b border-cyan-500/20 bg-black/20">
+      <h2 class="font-display font-bold uppercase tracking-widest text-cyan-100 text-sm">
+        IAM Relationship Graph
+      </h2>
+      <div class="font-mono text-[11px] text-cyan-50/60">
+        Hover nodes &middot; Scroll to zoom &middot; Drag to pan
+      </div>
+    </header>
+
+    <div class="p-5">
+      {% if not state.has_data %}
+        <div class="text-cyan-50/60 text-sm py-12 text-center">
+          Awaiting data. Upload JSON or initialize simulation from the main HUD.
+        </div>
+      {% else %}
+        <div id="net" class="h-[72vh] rounded-xl border border-cyan-500/20 bg-black/40"></div>
+      {% endif %}
+    </div>
+  </section>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+<script>
+  {% if state.has_data %}
+  if (typeof vis === "undefined") {
+    var box = document.getElementById("net");
+    if (box) {
+      box.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:rgba(207,250,254,0.6);font-family:JetBrains Mono,monospace;font-size:12px;text-align:center;padding:24px;">Graph library unavailable.<br/>Check network connection and reload.</div>';
+    }
+  } else {
+    const payload = {{ graph_payload | tojson | safe }};
+
+    const nodes = new vis.DataSet(payload.nodes.map(n => {
+      if (n.group === "user") {
+        return { ...n, shape: "box",
+          color: { background: "rgba(0,245,255,0.12)", border: "rgba(0,245,255,0.65)",
+                   highlight: { background: "rgba(0,245,255,0.20)", border: "#00F5FF" } } };
+      }
+      if (n.group === "role") {
+        return { ...n, shape: "ellipse",
+          color: { background: "rgba(255,176,32,0.10)", border: "rgba(255,176,32,0.65)",
+                   highlight: { background: "rgba(255,176,32,0.18)", border: "#FFB020" } } };
+      }
+      return { ...n, shape: "diamond",
+        color: { background: "rgba(255,53,94,0.10)", border: "rgba(255,53,94,0.65)" } };
+    }));
+
+    const edges = new vis.DataSet(payload.edges.map(e => ({
+      ...e,
+      font:  { size: 14, color: "rgba(230,255,255,0.92)", strokeWidth: 3, strokeColor: "rgba(0,0,0,0.5)" },
+      color: { color: "rgba(0,245,255,0.45)", highlight: "#00F5FF" }
+    })));
+
+    const options = {
+      interaction: { hover: true, tooltipDelay: 60 },
+      nodes: {
+        font:        { color: "rgba(230,255,255,0.98)", size: 16, face: "JetBrains Mono" },
+        margin:      14,
+        borderWidth: 2,
+        shadow:      { enabled: true, color: "rgba(0,245,255,0.25)", size: 12 }
+      },
+      edges: {
+        arrows: { to: { enabled: true, scaleFactor: 0.85 } },
+        smooth: { type: "dynamic" }
+      },
+      physics: {
+        stabilization: { iterations: 140 },
+        barnesHut:     { gravitationalConstant: -12000, springLength: 200 }
+      }
+    };
+
+    new vis.Network(document.getElementById("net"), { nodes, edges }, options);
+  }
+  {% endif %}
+</script>
+{% endblock %}

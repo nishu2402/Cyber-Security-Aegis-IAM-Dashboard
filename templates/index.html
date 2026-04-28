@@ -1,0 +1,829 @@
+{% extends "base.html" %}
+{% block content %}
+
+  <!-- ========================= COMMAND CENTER HEADER ========================= -->
+  <section id="topHud" class="relative mt-2 rounded-3xl border border-cyan-500/30 bg-cyber-panel
+                              backdrop-blur-xl shadow-glow-cyan overflow-hidden">
+    <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent"></div>
+    <div class="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent"></div>
+
+    <div class="px-6 sm:px-10 pt-8 pb-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+
+        <!-- Title block -->
+        <div class="lg:col-span-8 text-center lg:text-left">
+          <div class="font-mono text-[11px] uppercase tracking-[0.5em] text-cyan-300/70 mb-3">
+            // SENTINEL ONLINE
+          </div>
+          <h1 class="font-display font-black uppercase tracking-[0.18em]
+                     text-2xl sm:text-3xl lg:text-4xl
+                     bg-gradient-to-r from-cyan-300 via-cyan-200 to-cyan-400
+                     bg-clip-text text-transparent
+                     [text-shadow:0_0_24px_rgba(0,245,255,0.25)]">
+            Aegis-IAM Dashboard
+          </h1>
+          <p class="mt-3 text-sm text-cyan-50/70 max-w-3xl mx-auto lg:mx-0 leading-relaxed">
+            Production IAM Risk Analysis HUD &middot; Privilege Escalation Detection &middot; MITRE ATT&CK Context
+          </p>
+
+          <!-- Status pill + posture grade pill -->
+          <div class="mt-5 flex items-center justify-center lg:justify-start gap-3 flex-wrap">
+            <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full
+                        border border-cyan-500/30 bg-black/30 font-mono text-xs">
+              <span class="font-semibold tracking-widest text-cyan-50/80">STATUS:</span>
+              {% if not state.has_data %}
+                <span class="flex items-center gap-2 text-cyber-amber">
+                  <span class="h-2 w-2 rounded-full bg-cyber-amber shadow-glow-amber animate-pulse"></span>
+                  <span class="font-bold uppercase tracking-widest">Awaiting Data</span>
+                </span>
+              {% else %}
+                <span class="flex items-center gap-2 text-cyber-green">
+                  <span class="h-2 w-2 rounded-full bg-cyber-green shadow-glow-green"></span>
+                  <span class="font-bold uppercase tracking-widest">Analyzing</span>
+                </span>
+                <span class="text-cyan-50/60 normal-case tracking-normal">({{ state.dataset_name }})</span>
+              {% endif %}
+            </div>
+
+            {% if state.has_data %}
+              <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border font-mono text-xs"
+                   style="border-color: {{ posture.color }}55; background: rgba(0,0,0,0.35);">
+                <span class="font-semibold tracking-widest text-cyan-50/80">POSTURE:</span>
+                <span class="font-bold uppercase tracking-widest" style="color: {{ posture.color }};">
+                  {{ posture.grade }} &middot; {{ posture.status }}
+                </span>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+
+        <!-- Posture Score Ring -->
+        <div class="lg:col-span-4 flex justify-center lg:justify-end">
+          <div class="aegis-posture-ring" data-score="{{ posture.score }}" data-color="{{ posture.color }}">
+            <svg viewBox="0 0 140 140" class="aegis-posture-svg">
+              <defs>
+                <linearGradient id="postureGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="{{ posture.color }}" stop-opacity="0.95"/>
+                  <stop offset="100%" stop-color="{{ posture.color }}" stop-opacity="0.55"/>
+                </linearGradient>
+                <filter id="postureGlow" x="-30%" y="-30%" width="160%" height="160%">
+                  <feGaussianBlur stdDeviation="3" result="blur"/>
+                  <feMerge>
+                    <feMergeNode in="blur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+              </defs>
+
+              <!-- track -->
+              <circle cx="70" cy="70" r="58" fill="none"
+                      stroke="rgba(0,245,255,0.10)" stroke-width="10"/>
+              <!-- progress -->
+              <circle id="postureProgress" cx="70" cy="70" r="58" fill="none"
+                      stroke="url(#postureGrad)" stroke-width="10" stroke-linecap="round"
+                      filter="url(#postureGlow)"
+                      transform="rotate(-90 70 70)"
+                      style="stroke-dasharray: 364.42; stroke-dashoffset: 364.42;"/>
+              <!-- centre -->
+              <text x="70" y="64" text-anchor="middle"
+                    class="aegis-posture-num"
+                    style="fill: {{ posture.color }};">{{ posture.score }}</text>
+              <text x="70" y="84" text-anchor="middle"
+                    class="aegis-posture-label">POSTURE</text>
+              <text x="70" y="98" text-anchor="middle"
+                    class="aegis-posture-grade"
+                    style="fill: {{ posture.color }};">{{ posture.grade }}</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Action button cluster -->
+    <div class="px-6 sm:px-10 pb-8">
+      <div class="flex justify-center items-center flex-wrap gap-3 sm:gap-4">
+        <a href="{{ url_for('intel_lab') }}" class="aegis-btn">Intel Retrieval Lab</a>
+        <a href="{{ url_for('graph') }}" class="aegis-btn">Graph View</a>
+        <a href="{{ url_for('playbook') }}" class="aegis-btn">Dynamic Playbook</a>
+      </div>
+
+      <div class="mt-4 flex justify-center items-center flex-wrap gap-3 sm:gap-4">
+        <form id="uploadForm" action="{{ url_for('upload') }}" method="POST"
+              enctype="multipart/form-data" class="flex flex-wrap items-center gap-3">
+          <input type="hidden" name="_csrf" value="{{ csrf_token() }}"/>
+          <label class="aegis-file group">
+            <input type="file" name="file" accept=".json,application/json" required
+                   id="aegisFileInput"
+                   class="absolute inset-0 opacity-0 cursor-pointer" />
+            <span class="font-mono text-xs uppercase tracking-widest text-cyan-200/80 group-hover:text-cyan-200">
+              + Choose JSON (auto-uploads)
+            </span>
+          </label>
+        </form>
+
+        <form action="{{ url_for('reset') }}" method="POST">
+          <input type="hidden" name="_csrf" value="{{ csrf_token() }}"/>
+          <button type="submit" class="aegis-btn aegis-btn-danger">Reset</button>
+        </form>
+      </div>
+
+      <!-- Simulation Library — picker for multiple synthetic scenarios -->
+      <div class="mt-6 rounded-2xl border border-cyan-500/20 bg-black/30 px-5 py-4">
+        <div class="flex items-center justify-between flex-wrap gap-2 mb-3">
+          <div>
+            <div class="font-mono text-[10px] uppercase tracking-[0.4em] text-cyan-300/70">simulation library</div>
+            <h3 class="font-display font-bold uppercase tracking-widest text-cyan-100 text-xs mt-0.5">
+              Choose a Pre-Built Scenario
+            </h3>
+          </div>
+          <div class="font-mono text-[10px] uppercase tracking-widest text-cyan-300/50">
+            {{ simulations | length }} simulations available
+          </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          {% for sim in simulations %}
+            <form action="{{ url_for('init_demo') }}" method="POST" class="aegis-sim-form">
+              <input type="hidden" name="_csrf" value="{{ csrf_token() }}"/>
+              <input type="hidden" name="sim" value="{{ sim.id }}"/>
+              <button type="submit" class="aegis-sim-card aegis-sim-{{ sim.severity | lower }}">
+                <div class="flex items-center justify-between gap-2 mb-1.5">
+                  <span class="font-display font-bold uppercase tracking-widest text-[11px] text-cyan-100">
+                    {{ sim.label }}
+                  </span>
+                  <span class="aegis-sim-sev aegis-sim-sev-{{ sim.severity | lower }}">
+                    {{ sim.severity }}
+                  </span>
+                </div>
+                <p class="text-[11px] text-cyan-50/70 leading-relaxed">{{ sim.description }}</p>
+              </button>
+            </form>
+          {% endfor %}
+        </div>
+      </div>
+
+      {% if state.has_data %}
+      <div class="mt-4 flex justify-center items-center flex-wrap gap-3 sm:gap-4">
+        <button type="button" id="exportPdfBtn" class="aegis-btn">
+          <svg viewBox="0 0 24 24" class="h-3.5 w-3.5 inline-block mr-1.5 fill-none stroke-current stroke-2 align-[-2px]">
+            <path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" stroke-linejoin="round"/>
+            <path d="M14 3v6h6M9 14h6M9 18h6" stroke-linecap="round"/>
+          </svg>Export PDF
+        </button>
+        <a href="{{ url_for('export_json') }}" class="aegis-btn">
+          <svg viewBox="0 0 24 24" class="h-3.5 w-3.5 inline-block mr-1.5 fill-none stroke-current stroke-2 align-[-2px]">
+            <path d="M4 17l5 5L20 11M4 12l5-5 5 5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>Export JSON
+        </a>
+        <a href="{{ url_for('export_csv') }}" class="aegis-btn">
+          <svg viewBox="0 0 24 24" class="h-3.5 w-3.5 inline-block mr-1.5 fill-none stroke-current stroke-2 align-[-2px]">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>Export CSV
+        </a>
+      </div>
+      {% endif %}
+    </div>
+  </section>
+
+  <!-- ========================= STATS GRID ========================= -->
+  <section class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    {% set diff_users = diff.get('users', 0) if diff else 0 %}
+    {% set diff_roles = diff.get('roles', 0) if diff else 0 %}
+    {% set diff_pol   = diff.get('policies', 0) if diff else 0 %}
+    {% set diff_risk  = diff.get('risks', 0) if diff else 0 %}
+
+    <!-- Users -->
+    <div class="aegis-stat group" data-stat="users">
+      <div class="aegis-stat-icon text-cyber-cyan border-cyan-500/40">
+        <svg viewBox="0 0 24 24" class="h-6 w-6 fill-none stroke-current stroke-2">
+          <path d="M16 14a4 4 0 1 0-8 0M12 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM4 21c0-3 3-5 8-5s8 2 8 5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="flex items-center justify-between">
+        <div class="aegis-stat-label">Users</div>
+        {% if diff_users != 0 %}
+          <span class="aegis-delta aegis-delta-neutral">
+            {{ '%+d'|format(diff_users) }}
+          </span>
+        {% endif %}
+      </div>
+      <div class="aegis-stat-value text-cyber-cyan" data-count="{{ telemetry.users }}">0</div>
+    </div>
+
+    <!-- Roles -->
+    <div class="aegis-stat group" data-stat="roles">
+      <div class="aegis-stat-icon text-cyber-amber border-amber-500/40">
+        <svg viewBox="0 0 24 24" class="h-6 w-6 fill-none stroke-current stroke-2">
+          <path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1 3-6z" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="flex items-center justify-between">
+        <div class="aegis-stat-label">Roles</div>
+        {% if diff_roles != 0 %}
+          <span class="aegis-delta aegis-delta-neutral">
+            {{ '%+d'|format(diff_roles) }}
+          </span>
+        {% endif %}
+      </div>
+      <div class="aegis-stat-value text-cyber-amber" data-count="{{ telemetry.roles }}">0</div>
+    </div>
+
+    <!-- Policies -->
+    <div class="aegis-stat group" data-stat="policies">
+      <div class="aegis-stat-icon text-cyber-violet border-purple-500/40">
+        <svg viewBox="0 0 24 24" class="h-6 w-6 fill-none stroke-current stroke-2">
+          <path d="M12 3l8 4v5c0 5-3.5 8.5-8 9-4.5-.5-8-4-8-9V7l8-4z" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="flex items-center justify-between">
+        <div class="aegis-stat-label">Admin Policies</div>
+        {% if diff_pol != 0 %}
+          <span class="aegis-delta {% if diff_pol > 0 %}aegis-delta-bad{% else %}aegis-delta-good{% endif %}">
+            {{ '%+d'|format(diff_pol) }}
+          </span>
+        {% endif %}
+      </div>
+      <div class="aegis-stat-value text-cyber-violet" data-count="{{ telemetry.policies }}">0</div>
+    </div>
+
+    <!-- Risks + severity sparkline -->
+    <div class="aegis-stat group {% if telemetry.risks > 0 %}aegis-stat-alert{% endif %}" data-stat="risks">
+      <div class="aegis-stat-icon text-cyber-red border-rose-500/40">
+        <svg viewBox="0 0 24 24" class="h-6 w-6 fill-none stroke-current stroke-2">
+          <path d="M12 3l10 18H2L12 3zM12 10v5M12 18.5v.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="flex items-center justify-between">
+        <div class="aegis-stat-label">Risks</div>
+        {% if diff_risk != 0 %}
+          <span class="aegis-delta {% if diff_risk > 0 %}aegis-delta-bad{% else %}aegis-delta-good{% endif %}">
+            {{ '%+d'|format(diff_risk) }}
+          </span>
+        {% endif %}
+      </div>
+      <div class="aegis-stat-value text-cyber-red" data-count="{{ telemetry.risks }}">0</div>
+      {% if telemetry.risks > 0 %}
+        <div class="mt-1 font-mono text-[10px] uppercase tracking-widest text-rose-300/80">
+          {{ telemetry.escalations }} esc &middot; {{ telemetry.overprivileged }} priv &middot; {{ telemetry.conflicts }} sod
+        </div>
+        <div class="aegis-sparkline mt-2" aria-hidden="true">
+          {% set sd = posture.severity_distribution %}
+          {% set maxv = [sd.Critical, sd.High, sd.Medium, sd.Low, 1] | max %}
+          <span class="bar bar-crit" style="height: {{ (sd.Critical / maxv * 100) | round | int }}%"
+                title="{{ sd.Critical }} Critical"></span>
+          <span class="bar bar-high" style="height: {{ (sd.High / maxv * 100) | round | int }}%"
+                title="{{ sd.High }} High"></span>
+          <span class="bar bar-med"  style="height: {{ (sd.Medium / maxv * 100) | round | int }}%"
+                title="{{ sd.Medium }} Medium"></span>
+          <span class="bar bar-low"  style="height: {{ (sd.Low / maxv * 100) | round | int }}%"
+                title="{{ sd.Low }} Low"></span>
+        </div>
+      {% endif %}
+    </div>
+  </section>
+
+  <!-- ========================= FLASH MESSAGES (also pushed as toasts) ========================= -->
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <div id="flashSource" class="hidden">
+        {% for m in messages %}<div class="flash-msg">{{ m }}</div>{% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  <!-- ========================= MAIN BODY ========================= -->
+  {% if not state.has_data %}
+    <!-- AWAITING DATA STATE -->
+    <section class="mt-8 rounded-3xl border border-cyan-500/30 bg-cyber-panel backdrop-blur-xl
+                    shadow-glow-cyan p-8 sm:p-12 text-center">
+      <div class="inline-flex items-center justify-center h-16 w-16 rounded-full
+                  border border-cyan-500/40 bg-black/40 mb-5
+                  shadow-[0_0_30px_rgba(0,245,255,0.35)]">
+        <svg viewBox="0 0 24 24" class="h-7 w-7 text-cyber-cyan fill-none stroke-current stroke-[1.5]">
+          <path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M5 19l3-3M16 8l3-3" stroke-linecap="round"/>
+          <circle cx="12" cy="12" r="3"/>
+        </svg>
+      </div>
+      <h2 class="font-display font-bold uppercase tracking-[0.2em] text-cyan-200 text-xl sm:text-2xl mb-3">
+        Awaiting Data
+      </h2>
+      <p class="max-w-2xl mx-auto text-cyan-50/70 leading-relaxed">
+        Upload a real-world IAM JSON export to begin analysis. For AWS, run:
+      </p>
+      <code class="inline-block mt-4 px-4 py-2 rounded-lg border border-cyan-500/30
+                   bg-black/50 font-mono text-xs text-cyan-200">
+        aws iam get-account-authorization-details --output json &gt; iam.json
+      </code>
+      <p class="mt-4 text-sm text-cyan-50/60">
+        Or click <span class="font-bold text-cyan-200">Initialize Simulation</span> to load the demo dataset.
+      </p>
+    </section>
+
+  {% else %}
+
+    <!-- ========================= MITRE ATT&CK HEATMAP ========================= -->
+    <section id="mitreHeatmap"
+             class="mt-8 rounded-3xl border border-cyan-500/30 bg-cyber-panel backdrop-blur-xl
+                    shadow-glow-cyan overflow-hidden">
+      <header class="flex flex-col sm:flex-row sm:items-center justify-between gap-3
+                     px-5 py-4 border-b border-cyan-500/20 bg-black/20">
+        <div>
+          <div class="font-mono text-[10px] uppercase tracking-[0.4em] text-cyan-300/70">module 02</div>
+          <h2 class="font-display font-bold uppercase tracking-widest text-cyan-100 text-sm">
+            MITRE ATT&CK Heatmap
+          </h2>
+        </div>
+        <div class="font-mono text-[10px] uppercase tracking-widest text-cyan-300/60 flex items-center gap-3">
+          <span class="flex items-center gap-1.5">
+            <span class="aegis-heat-dot" data-intensity="0"></span> Cold
+          </span>
+          <span class="flex items-center gap-1.5">
+            <span class="aegis-heat-dot" data-intensity="1"></span>
+            <span class="aegis-heat-dot" data-intensity="2"></span>
+            <span class="aegis-heat-dot" data-intensity="3"></span>
+            <span class="aegis-heat-dot" data-intensity="4"></span> Hot
+          </span>
+        </div>
+      </header>
+
+      <div class="p-5">
+        <div class="aegis-heatmap-grid">
+          {% for tac in heatmap %}
+            <div class="aegis-heat-col" data-intensity="{{ tac.intensity }}"
+                 style="--tac-color: {{ tac.color }};">
+              <div class="aegis-heat-tactic">
+                <span class="font-mono text-[10px] tracking-widest text-cyan-300/70">{{ tac.id }}</span>
+                <span class="font-display font-bold uppercase tracking-widest text-[11px] text-cyan-100 leading-tight">
+                  {{ tac.name }}
+                </span>
+              </div>
+              <div class="aegis-heat-cells">
+                {% if tac.techniques|length == 0 %}
+                  <div class="aegis-heat-empty">—</div>
+                {% else %}
+                  {% for t in tac.techniques %}
+                    <button type="button"
+                            class="aegis-heat-cell"
+                            style="--cell-color: {{ tac.color }};"
+                            data-tech-id="{{ t.id }}"
+                            data-tech-name="{{ t.name }}"
+                            data-principals="{{ t.principals | join(', ') }}"
+                            data-tactic="{{ tac.name }}"
+                            data-tactic-id="{{ tac.id }}"
+                            title="{{ t.id }} — {{ t.name }} ({{ t.principals|length }} principal(s))">
+                      <span class="aegis-heat-tech">{{ t.id }}</span>
+                      <span class="aegis-heat-name">{{ t.name }}</span>
+                      <span class="aegis-heat-count">×{{ t.count }}</span>
+                    </button>
+                  {% endfor %}
+                {% endif %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= FILTER CHIP BAR ========================= -->
+    <section id="filterBar" class="mt-8 rounded-3xl border border-cyan-500/30 bg-cyber-panel
+                                   backdrop-blur-xl shadow-glow-cyan px-5 py-4">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 flex-wrap">
+        <div class="flex items-center gap-2 flex-wrap">
+          <span class="font-mono text-[10px] uppercase tracking-[0.4em] text-cyan-300/70 mr-1">
+            FILTER:
+          </span>
+          <button type="button" data-filter="all"      class="aegis-chip is-active">All</button>
+          <button type="button" data-filter="critical" class="aegis-chip aegis-chip-crit">Critical</button>
+          <button type="button" data-filter="high"     class="aegis-chip aegis-chip-high">High</button>
+          <button type="button" data-filter="medium"   class="aegis-chip aegis-chip-med">Medium</button>
+          <button type="button" data-filter="low"      class="aegis-chip aegis-chip-low">Low</button>
+        </div>
+        <div class="flex items-center gap-2 flex-wrap">
+          <span class="font-mono text-[10px] uppercase tracking-[0.4em] text-cyan-300/70 mr-1">
+            TYPE:
+          </span>
+          <button type="button" data-type="all"            class="aegis-chip is-active">All</button>
+          <button type="button" data-type="escalation"     class="aegis-chip">Escalation</button>
+          <button type="button" data-type="overprivileged" class="aegis-chip aegis-chip-crit">Over-Priv</button>
+          <button type="button" data-type="conflict"       class="aegis-chip aegis-chip-med">SoD</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= ANALYSIS GRID ========================= -->
+    <section class="mt-6 grid grid-cols-1 xl:grid-cols-12 gap-6">
+
+      <!-- ESCALATION CHAINS -->
+      <div class="xl:col-span-7 rounded-3xl border border-cyan-500/30 bg-cyber-panel backdrop-blur-xl
+                  shadow-glow-cyan overflow-hidden" data-finding-group="escalation">
+        <header class="flex flex-col sm:flex-row sm:items-center justify-between gap-3
+                       px-5 py-4 border-b border-cyan-500/20 bg-black/20">
+          <div>
+            <div class="font-mono text-[10px] uppercase tracking-[0.4em] text-cyan-300/70">module 03</div>
+            <h2 class="font-display font-bold uppercase tracking-widest text-cyan-100 text-sm">
+              Privilege Escalation Chains
+            </h2>
+          </div>
+          <input id="searchEsc" placeholder="Search principal / severity / technique..."
+                 class="aegis-input w-full sm:w-64" />
+        </header>
+
+        <div class="p-5">
+          {% if findings|length == 0 %}
+            <div class="text-cyan-50/60 text-sm py-8 text-center">
+              No escalation paths detected for the current dataset.
+            </div>
+          {% else %}
+            <table id="escTable" class="w-full text-left">
+              <thead class="text-[10px] font-mono uppercase tracking-widest text-cyan-200/70">
+                <tr class="border-b border-cyan-500/20">
+                  <th class="py-2 pr-3">Principal</th>
+                  <th class="py-2 px-3">Severity</th>
+                  <th class="py-2 px-3">Steps</th>
+                  <th class="py-2 pl-3">Chain &middot; Cause &middot; Remediation</th>
+                </tr>
+              </thead>
+              <tbody class="text-sm">
+                {% for f in findings %}
+                  <tr class="aegis-finding-row border-b border-cyan-500/10 hover:bg-cyan-500/5 align-top cursor-pointer"
+                      data-finding-type="escalation"
+                      data-finding-severity="{{ f.severity | lower }}"
+                      data-finding-index="{{ loop.index0 }}">
+                    <td class="py-3 pr-3 font-semibold text-cyan-100">{{ f.principal }}</td>
+                    <td class="py-3 px-3">
+                      {% if f.severity == 'Critical' %}
+                        <span class="aegis-badge aegis-badge-crit"><span class="aegis-dot"></span> Critical</span>
+                      {% elif f.severity == 'High' %}
+                        <span class="aegis-badge aegis-badge-high"><span class="aegis-dot"></span> High</span>
+                      {% elif f.severity == 'Medium' %}
+                        <span class="aegis-badge aegis-badge-med"><span class="aegis-dot"></span> Medium</span>
+                      {% else %}
+                        <span class="aegis-badge aegis-badge-low"><span class="aegis-dot"></span> Low</span>
+                      {% endif %}
+                    </td>
+                    <td class="py-3 px-3 font-mono text-cyan-200">{{ f.steps }}</td>
+                    <td class="py-3 pl-3">
+                      <div class="font-mono text-xs px-3 py-2 rounded-lg border border-cyan-500/20
+                                  bg-black/40 text-cyan-100/90 break-words mb-2">
+                        {{ f.chain }}
+                      </div>
+                      <div class="text-xs text-cyan-50/70 leading-relaxed">
+                        <span class="font-semibold text-cyan-200">Root cause:</span> {{ f.root_cause }}<br/>
+                        <span class="font-semibold text-cyan-200">Recommended remediation:</span> {{ f.remediation_summary }}
+                      </div>
+                      {% if f.mitre|length > 0 %}
+                        <div class="mt-3 flex flex-wrap gap-1.5">
+                          {% for t in f.mitre[:5] %}
+                            <span class="aegis-mitre-badge"
+                                  title="{{ t.tactic }} — {{ t.note }}">
+                              <span class="font-bold text-cyber-cyan">{{ t.id }}</span>
+                              <span class="text-cyan-100">{{ t.technique }}</span>
+                            </span>
+                          {% endfor %}
+                          {% if f.mitre|length > 5 %}
+                            <span class="aegis-mitre-badge text-cyan-300/70">+{{ f.mitre|length - 5 }} more</span>
+                          {% endif %}
+                        </div>
+                      {% endif %}
+                      <div class="mt-2 font-mono text-[10px] uppercase tracking-widest text-cyan-300/60">
+                        ▸ Click row for full intel
+                      </div>
+                    </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+
+            <!-- Hidden full payload for drawer -->
+            <script id="findingsPayload" type="application/json">
+              {{ findings | tojson | safe }}
+            </script>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- TELEMETRY + RISK -->
+      <div class="xl:col-span-5 space-y-6">
+
+        <!-- Risk Counts chart -->
+        <div class="rounded-3xl border border-cyan-500/30 bg-cyber-panel backdrop-blur-xl
+                    shadow-glow-cyan overflow-hidden">
+          <header class="px-5 py-4 border-b border-cyan-500/20 bg-black/20">
+            <div class="font-mono text-[10px] uppercase tracking-[0.4em] text-cyan-300/70">module 04</div>
+            <h2 class="font-display font-bold uppercase tracking-widest text-cyan-100 text-sm">
+              Risk Telemetry
+            </h2>
+          </header>
+          <div class="p-5">
+            <canvas id="riskChart" height="180"></canvas>
+          </div>
+        </div>
+
+        <!-- Over-privileged: red-glow cards -->
+        <div class="rounded-3xl border border-rose-500/40 bg-cyber-panel backdrop-blur-xl
+                    shadow-glow-red overflow-hidden" data-finding-group="overprivileged">
+          <header class="flex flex-col sm:flex-row sm:items-center justify-between gap-3
+                         px-5 py-4 border-b border-rose-500/30 bg-black/20">
+            <div>
+              <div class="font-mono text-[10px] uppercase tracking-[0.4em] text-rose-300/80">module 05</div>
+              <h2 class="font-display font-bold uppercase tracking-widest text-rose-100 text-sm">
+                Over-Privileged Principals
+              </h2>
+            </div>
+            <input id="searchOver" placeholder="Search principal..."
+                   class="aegis-input aegis-input-red w-full sm:w-48" />
+          </header>
+          <div class="p-5">
+            {% if overprivileged|length == 0 %}
+              <div class="text-cyan-50/60 text-sm py-6 text-center">
+                No over-privileged principals detected.
+              </div>
+            {% else %}
+              <div id="overTable" class="space-y-4">
+                {% for u in overprivileged %}
+                  <div class="aegis-risk-card aegis-finding-card cursor-pointer"
+                       data-finding-type="overprivileged"
+                       data-finding-severity="high"
+                       data-finding-index="{{ loop.index0 }}">
+                    <div class="flex items-center justify-between gap-3 mb-3">
+                      <div class="flex items-center gap-3">
+                        <span class="h-2.5 w-2.5 rounded-full bg-cyber-red shadow-[0_0_12px_rgba(255,53,94,0.9)] animate-pulse"></span>
+                        <h3 class="font-display font-bold uppercase tracking-widest text-rose-100 text-sm">
+                          {{ u.principal }}
+                        </h3>
+                      </div>
+                      <span class="aegis-badge aegis-badge-crit">High Risk</span>
+                    </div>
+
+                    <div class="space-y-1.5 mb-3">
+                      {% for r in u.reasons %}
+                        <div class="flex items-start gap-2 text-xs text-rose-100/90 leading-relaxed">
+                          <span class="font-mono text-rose-300 mt-px">▸</span>
+                          <span>{{ r }}</span>
+                        </div>
+                      {% endfor %}
+                    </div>
+
+                    <div class="rounded-lg border border-rose-500/20 bg-black/40 px-3 py-2
+                                font-mono text-[11px] text-rose-100/70 break-words">
+                      <span class="text-rose-300/90 font-bold mr-1">PERMS:</span>{{ u.permission_sample }}
+                    </div>
+
+                    {% if u.mitre|length > 0 %}
+                      <div class="mt-3 flex flex-wrap gap-1.5">
+                        {% for t in u.mitre[:6] %}
+                          <span class="aegis-mitre-badge aegis-mitre-badge-red"
+                                title="{{ t.tactic }} — {{ t.note }}">
+                            <span class="font-bold">{{ t.id }}</span>
+                            <span>{{ t.technique }}</span>
+                          </span>
+                        {% endfor %}
+                      </div>
+                    {% endif %}
+                  </div>
+                {% endfor %}
+              </div>
+
+              <script id="overprivPayload" type="application/json">
+                {{ overprivileged | tojson | safe }}
+              </script>
+            {% endif %}
+          </div>
+        </div>
+
+        <!-- SoD Conflicts -->
+        <div class="rounded-3xl border border-amber-500/40 bg-cyber-panel backdrop-blur-xl
+                    shadow-glow-amber overflow-hidden" data-finding-group="conflict">
+          <header class="flex flex-col sm:flex-row sm:items-center justify-between gap-3
+                         px-5 py-4 border-b border-amber-500/30 bg-black/20">
+            <div>
+              <div class="font-mono text-[10px] uppercase tracking-[0.4em] text-amber-300/80">module 06</div>
+              <h2 class="font-display font-bold uppercase tracking-widest text-amber-100 text-sm">
+                Separation-of-Duties Conflicts
+              </h2>
+            </div>
+            <input id="searchConf" placeholder="Search principal..."
+                   class="aegis-input aegis-input-amber w-full sm:w-48" />
+          </header>
+          <div class="p-5">
+            {% if conflicts|length == 0 %}
+              <div class="text-cyan-50/60 text-sm py-6 text-center">
+                No conflicts detected (based on configured matrix).
+              </div>
+            {% else %}
+              <div id="confTable" class="space-y-3">
+                {% for c in conflicts %}
+                  <div class="aegis-conflict-card aegis-finding-card cursor-pointer"
+                       data-finding-type="conflict"
+                       data-finding-severity="medium"
+                       data-finding-index="{{ loop.index0 }}">
+                    <div class="flex items-center gap-2 mb-2">
+                      <svg viewBox="0 0 24 24" class="h-4 w-4 text-cyber-amber fill-none stroke-current stroke-2">
+                        <path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" stroke-linejoin="round"/>
+                      </svg>
+                      <h3 class="font-display font-bold uppercase tracking-widest text-amber-100 text-xs">
+                        {{ c.principal }}
+                      </h3>
+                    </div>
+                    <ul class="space-y-1.5">
+                      {% for item in c.conflicts %}
+                        <li class="flex items-start gap-2 text-xs text-amber-100/90">
+                          <span class="font-mono text-amber-300 mt-px">▸</span>
+                          <div>
+                            <div>{{ item.label }}</div>
+                            <div class="font-mono text-[11px] text-amber-200/60 mt-0.5">
+                              {{ item.pair[0] }} &nbsp;+&nbsp; {{ item.pair[1] }}
+                            </div>
+                          </div>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                {% endfor %}
+              </div>
+
+              <script id="conflictsPayload" type="application/json">
+                {{ conflicts | tojson | safe }}
+              </script>
+            {% endif %}
+          </div>
+        </div>
+
+        <!-- Posture factor breakdown -->
+        {% if posture.factors|length > 0 %}
+          <div class="rounded-3xl border border-cyan-500/30 bg-cyber-panel backdrop-blur-xl
+                      shadow-glow-cyan overflow-hidden">
+            <header class="px-5 py-4 border-b border-cyan-500/20 bg-black/20">
+              <div class="font-mono text-[10px] uppercase tracking-[0.4em] text-cyan-300/70">module 07</div>
+              <h2 class="font-display font-bold uppercase tracking-widest text-cyan-100 text-sm">
+                Posture Score Breakdown
+              </h2>
+            </header>
+            <div class="p-5">
+              <div class="text-xs text-cyan-50/70 mb-3 leading-relaxed">
+                Score starts at <span class="font-mono text-cyan-200">100</span>.
+                Each detected risk subtracts weighted points.
+              </div>
+              <ul class="space-y-2">
+                {% for ff in posture.factors %}
+                  <li class="flex items-center justify-between gap-3 px-3 py-2 rounded-lg
+                             border border-cyan-500/15 bg-black/30">
+                    <span class="text-xs text-cyan-50/85">{{ ff.label }}</span>
+                    <span class="font-mono text-xs font-bold"
+                          style="color: {{ '#FF355E' if ff.delta <= -10 else '#FFB020' if ff.delta <= -5 else '#22D3EE' }}">
+                      {{ ff.delta }}
+                    </span>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        {% endif %}
+
+      </div>
+    </section>
+
+    <!-- ========================= REPORT PREVIEW ========================= -->
+    <section class="mt-8 rounded-3xl border border-cyan-500/30 bg-cyber-panel backdrop-blur-xl
+                    shadow-glow-cyan overflow-hidden">
+      <header class="px-5 py-4 border-b border-cyan-500/20 bg-black/20">
+        <div class="font-mono text-[10px] uppercase tracking-[0.4em] text-cyan-300/70">module 08</div>
+        <h2 class="font-display font-bold uppercase tracking-widest text-cyan-100 text-sm">
+          Intelligence Report Preview (PDF Export Source)
+        </h2>
+      </header>
+
+      <div id="reportArea" class="p-6">
+        <div class="flex items-start justify-between gap-4 flex-wrap">
+          <div>
+            <div class="font-display font-black uppercase tracking-widest text-cyan-100">
+              Aegis-IAM Intelligence Report
+            </div>
+            <div class="text-xs text-cyan-50/60 mt-1">Generated: {{ state.generated_at }}</div>
+            <div class="text-xs text-cyan-50/60">Dataset: {{ state.dataset_name }}</div>
+            <div class="text-xs text-cyan-50/60">Posture Score: {{ posture.score }} ({{ posture.grade }} — {{ posture.status }})</div>
+          </div>
+          <div class="text-xs text-cyan-50/60 max-w-md text-right">
+            Owned and Developed by Nisarg Chasmawala (Shroff), Jatin Kumar, and Santhakumar Parivalla. © 2026 All Rights Reserved.
+          </div>
+        </div>
+
+        <hr class="my-4 border-0 border-t border-cyan-500/20"/>
+
+        <div class="font-bold uppercase tracking-widest text-cyan-200 text-xs mb-2">Summary</div>
+        <div class="text-xs text-cyan-50/70">
+          Users: {{ telemetry.users }} &middot; Roles: {{ telemetry.roles }} &middot;
+          Escalations: {{ telemetry.escalations }} &middot; Over-Privilege: {{ telemetry.overprivileged }} &middot;
+          Conflicts: {{ telemetry.conflicts }}
+        </div>
+
+        <div class="font-bold uppercase tracking-widest text-cyan-200 text-xs mt-5 mb-2">Findings</div>
+        {% if findings|length == 0 %}
+          <div class="text-xs text-cyan-50/60">No escalation findings detected.</div>
+        {% else %}
+          <div class="space-y-3">
+            {% for f in findings %}
+              <div class="rounded-xl border border-cyan-500/20 bg-black/30 p-3">
+                <div class="font-bold text-sm text-cyan-100">{{ f.principal }} — {{ f.severity }}</div>
+                <div class="text-xs text-cyan-50/70 mt-1"><span class="font-semibold">Chain:</span> {{ f.chain }}</div>
+                <div class="text-xs text-cyan-50/70 mt-1"><span class="font-semibold">Root cause:</span> {{ f.root_cause }}</div>
+                <div class="text-xs text-cyan-50/70 mt-1"><span class="font-semibold">Remediation:</span> {{ f.remediation_summary }}</div>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        <div class="font-bold uppercase tracking-widest text-cyan-200 text-xs mt-5">Playbook (Auto-generated)</div>
+        <div class="text-xs text-cyan-50/70">
+          See <span class="font-bold text-cyan-200">Dynamic Playbook</span> for step-by-step patching commands and strategies.
+        </div>
+      </div>
+    </section>
+
+  {% endif %}
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+  (function () {
+    AegisHUD.wireUploadScan("uploadForm", "topHud");
+    AegisHUD.wireSearch("searchEsc", "escTable");
+    AegisHUD.wireSearchCards("searchOver", "overTable");
+    AegisHUD.wireSearchCards("searchConf", "confTable");
+    AegisHUD.startParticles("aegisParticles");
+    AegisHUD.installCommandPalette();
+    AegisHUD.installDrawer();
+    AegisHUD.animateStatCounts();
+    AegisHUD.flashToToast("flashSource");
+    AegisHUD.installPostureRing();
+    AegisHUD.installFilterBar();
+    AegisHUD.installHeatmapClicks();
+    AegisHUD.installFindingDrawer();
+
+    var pdfBtn = document.getElementById("exportPdfBtn");
+    if (pdfBtn) pdfBtn.addEventListener("click", function () {
+      AegisHUD.generatePDF("reportArea", "Aegis-IAM-Intelligence-Report.pdf");
+    });
+
+    {% if state.has_data %}
+    AegisHUD.toast("Analysis complete · {{ telemetry.risks }} risk(s) detected", "{{ 'critical' if telemetry.risks > 0 else 'info' }}");
+    {% endif %}
+
+    var ctx = document.getElementById("riskChart");
+    if (ctx && typeof Chart !== "undefined") {
+      var esc  = Number("{{ telemetry.escalations }}");
+      var over = Number("{{ telemetry.overprivileged }}");
+      var conf = Number("{{ telemetry.conflicts }}");
+
+      new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: ["Escalations", "Over-Privilege", "Conflicts"],
+          datasets: [{
+            label: "Count",
+            data: [esc, over, conf],
+            backgroundColor: [
+              "rgba(255, 53, 94, 0.55)",
+              "rgba(255, 176, 32, 0.55)",
+              "rgba(0, 245, 255, 0.55)"
+            ],
+            borderColor: [
+              "rgba(255, 53, 94, 1)",
+              "rgba(255, 176, 32, 1)",
+              "rgba(0, 245, 255, 1)"
+            ],
+            borderWidth: 1.5,
+            borderRadius: 6,
+            maxBarThickness: 50
+          }]
+        },
+        options: {
+          responsive: true,
+          animation: { duration: 800 },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: "rgba(8,18,32,0.95)",
+              titleColor: "#67e8f9",
+              bodyColor: "#e6ffff",
+              borderColor: "rgba(0,245,255,0.4)",
+              borderWidth: 1
+            }
+          },
+          scales: {
+            x: {
+              ticks: { color: "rgba(230,255,255,0.75)", font: { family: "JetBrains Mono", size: 10 } },
+              grid:  { color: "rgba(0,245,255,0.08)" }
+            },
+            y: {
+              beginAtZero: true,
+              ticks: { color: "rgba(230,255,255,0.75)", precision: 0, font: { family: "JetBrains Mono", size: 10 } },
+              grid:  { color: "rgba(0,245,255,0.08)" }
+            }
+          }
+        }
+      });
+    }
+  })();
+</script>
+{% endblock %}
