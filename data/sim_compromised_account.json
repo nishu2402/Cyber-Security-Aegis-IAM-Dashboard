@@ -1,0 +1,94 @@
+{
+  "UserDetailList": [
+    {
+      "UserName": "ops.admin",
+      "Arn": "arn:aws:iam::100000000001:user/ops.admin",
+      "AttachedManagedPolicies": [
+        {"PolicyName": "AdministratorAccess", "PolicyArn": "arn:aws:iam::aws:policy/AdministratorAccess"}
+      ],
+      "GroupList": ["Admins"],
+      "UserPolicyList": []
+    },
+    {
+      "UserName": "compromised.dev",
+      "Arn": "arn:aws:iam::100000000001:user/compromised.dev",
+      "AttachedManagedPolicies": [],
+      "GroupList": [],
+      "UserPolicyList": [
+        {
+          "PolicyName": "AttackerEstablishedPersistence",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "iam:CreateAccessKey",
+                  "iam:UpdateAccessKey",
+                  "iam:CreateLoginProfile",
+                  "iam:UpdateLoginProfile",
+                  "iam:CreateUser"
+                ],
+                "Resource": "*"
+              },
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "iam:DeleteAccessKey",
+                  "cloudtrail:StopLogging",
+                  "iam:DeleteUser"
+                ],
+                "Resource": "*"
+              },
+              {
+                "Effect": "Allow",
+                "Action": "sts:AssumeRole",
+                "Resource": "*"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "ci.svc",
+      "Arn": "arn:aws:iam::100000000001:user/ci.svc",
+      "AttachedManagedPolicies": [],
+      "GroupList": [],
+      "UserPolicyList": [
+        {
+          "PolicyName": "CICDDeploy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [{"Effect": "Allow", "Action": ["s3:PutObject", "ecr:PutImage"], "Resource": "*"}]
+          }
+        }
+      ]
+    }
+  ],
+  "GroupDetailList": [
+    {
+      "GroupName": "Admins",
+      "Arn": "arn:aws:iam::100000000001:group/Admins",
+      "AttachedManagedPolicies": [
+        {"PolicyName": "AdministratorAccess", "PolicyArn": "arn:aws:iam::aws:policy/AdministratorAccess"}
+      ],
+      "GroupPolicyList": []
+    }
+  ],
+  "RoleDetailList": [
+    {
+      "RoleName": "BackdoorRole",
+      "Arn": "arn:aws:iam::100000000001:role/BackdoorRole",
+      "AssumeRolePolicyDocument": {
+        "Version": "2012-10-17",
+        "Statement": [{"Effect": "Allow", "Principal": {"AWS": "*"}, "Action": "sts:AssumeRole"}]
+      },
+      "AttachedManagedPolicies": [
+        {"PolicyName": "AdministratorAccess", "PolicyArn": "arn:aws:iam::aws:policy/AdministratorAccess"}
+      ],
+      "RolePolicyList": []
+    }
+  ],
+  "Policies": []
+}

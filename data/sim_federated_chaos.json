@@ -1,0 +1,93 @@
+{
+  "UserDetailList": [
+    {
+      "UserName": "saml.federated.engineer",
+      "Arn": "arn:aws:iam::400000000004:user/saml.federated.engineer",
+      "AttachedManagedPolicies": [],
+      "GroupList": [],
+      "UserPolicyList": [
+        {
+          "PolicyName": "FederatedAssume",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": ["sts:AssumeRoleWithSAML", "sts:AssumeRole", "sts:GetFederationToken"],
+                "Resource": "*"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "oidc.principal",
+      "Arn": "arn:aws:iam::400000000004:user/oidc.principal",
+      "AttachedManagedPolicies": [],
+      "GroupList": [],
+      "UserPolicyList": [
+        {
+          "PolicyName": "OIDCFlow",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [{"Effect": "Allow", "Action": "sts:AssumeRoleWithWebIdentity", "Resource": "*"}]
+          }
+        }
+      ]
+    }
+  ],
+  "GroupDetailList": [],
+  "RoleDetailList": [
+    {
+      "RoleName": "WildcardCrossAccount",
+      "Arn": "arn:aws:iam::400000000004:role/WildcardCrossAccount",
+      "AssumeRolePolicyDocument": {
+        "Version": "2012-10-17",
+        "Statement": [{"Effect": "Allow", "Principal": {"AWS": "*"}, "Action": "sts:AssumeRole"}]
+      },
+      "AttachedManagedPolicies": [
+        {"PolicyName": "AdministratorAccess", "PolicyArn": "arn:aws:iam::aws:policy/AdministratorAccess"}
+      ],
+      "RolePolicyList": []
+    },
+    {
+      "RoleName": "GitHubOIDCDeploy",
+      "Arn": "arn:aws:iam::400000000004:role/GitHubOIDCDeploy",
+      "AssumeRolePolicyDocument": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Principal": {"Federated": "arn:aws:iam::400000000004:oidc-provider/token.actions.githubusercontent.com"},
+            "Action": "sts:AssumeRoleWithWebIdentity",
+            "Condition": {"StringLike": {"token.actions.githubusercontent.com:sub": "repo:*"}}
+          }
+        ]
+      },
+      "AttachedManagedPolicies": [
+        {"PolicyName": "PowerUserAccess", "PolicyArn": "arn:aws:iam::aws:policy/PowerUserAccess"}
+      ],
+      "RolePolicyList": []
+    },
+    {
+      "RoleName": "SAMLAdminRole",
+      "Arn": "arn:aws:iam::400000000004:role/SAMLAdminRole",
+      "AssumeRolePolicyDocument": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Principal": {"Federated": "arn:aws:iam::400000000004:saml-provider/CompanyIdP"},
+            "Action": "sts:AssumeRoleWithSAML"
+          }
+        ]
+      },
+      "AttachedManagedPolicies": [
+        {"PolicyName": "AdministratorAccess", "PolicyArn": "arn:aws:iam::aws:policy/AdministratorAccess"}
+      ],
+      "RolePolicyList": []
+    }
+  ],
+  "Policies": []
+}

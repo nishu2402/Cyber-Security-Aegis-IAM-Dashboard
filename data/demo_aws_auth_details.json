@@ -1,0 +1,117 @@
+{
+  "UserDetailList": [
+    {
+      "Path": "/",
+      "UserName": "intern",
+      "UserId": "AIDAINTERN",
+      "Arn": "arn:aws:iam::123456789012:user/intern",
+      "GroupList": [
+        "SupportTeam"
+      ],
+      "AttachedManagedPolicies": [
+        {
+          "PolicyName": "ReadOnlyAccess",
+          "PolicyArn": "arn:aws:iam::aws:policy/ReadOnlyAccess"
+        }
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "AssumeOpsRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "sts:AssumeRole"
+                ],
+                "Resource": [
+                  "arn:aws:iam::123456789012:role/ops-role"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "GroupDetailList": [
+    {
+      "Path": "/",
+      "GroupName": "SupportTeam",
+      "GroupId": "AGPASUPPORT",
+      "Arn": "arn:aws:iam::123456789012:group/SupportTeam",
+      "AttachedManagedPolicies": [],
+      "GroupPolicyList": [
+        {
+          "PolicyName": "HelpdeskGroupInline",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "iam:ListUsers",
+                  "iam:GetUser",
+                  "iam:ListRoles"
+                ],
+                "Resource": "*"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "RoleDetailList": [
+    {
+      "Path": "/",
+      "RoleName": "ops-role",
+      "RoleId": "AROPOPS",
+      "Arn": "arn:aws:iam::123456789012:role/ops-role",
+      "AssumeRolePolicyDocument": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Principal": {
+              "AWS": "arn:aws:iam::123456789012:user/intern"
+            },
+            "Action": "sts:AssumeRole"
+          }
+        ]
+      },
+      "AttachedManagedPolicies": [
+        {
+          "PolicyName": "AdministratorAccess",
+          "PolicyArn": "arn:aws:iam::aws:policy/AdministratorAccess"
+        }
+      ],
+      "RolePolicyList": []
+    }
+  ],
+  "Policies": [
+    {
+      "PolicyName": "CustomAdminLike",
+      "PolicyId": "ANPADMINLIKE",
+      "Arn": "arn:aws:iam::123456789012:policy/CustomAdminLike",
+      "DefaultVersionId": "v1",
+      "PolicyVersionList": [
+        {
+          "VersionId": "v1",
+          "IsDefaultVersion": true,
+          "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": "*",
+                "Resource": "*"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

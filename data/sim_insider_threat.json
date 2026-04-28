@@ -1,0 +1,117 @@
+{
+  "UserDetailList": [
+    {
+      "UserName": "veteran.engineer",
+      "Arn": "arn:aws:iam::200000000002:user/veteran.engineer",
+      "AttachedManagedPolicies": [
+        {"PolicyName": "ReadOnlyAccess", "PolicyArn": "arn:aws:iam::aws:policy/ReadOnlyAccess"},
+        {"PolicyName": "IAMFullAccess", "PolicyArn": "arn:aws:iam::aws:policy/IAMFullAccess"}
+      ],
+      "GroupList": ["LegacyAccess"],
+      "UserPolicyList": [
+        {
+          "PolicyName": "AccumulatedPermissions2019",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "secretsmanager:GetSecretValue",
+                  "secretsmanager:ListSecrets",
+                  "kms:Decrypt",
+                  "ssm:GetParameter",
+                  "ssm:GetParameters"
+                ],
+                "Resource": "*"
+              },
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "iam:PutUserPolicy",
+                  "iam:GetUserPolicy",
+                  "iam:CreatePolicyVersion",
+                  "iam:SetDefaultPolicyVersion"
+                ],
+                "Resource": "*"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "junior.engineer",
+      "Arn": "arn:aws:iam::200000000002:user/junior.engineer",
+      "AttachedManagedPolicies": [
+        {"PolicyName": "ReadOnlyAccess", "PolicyArn": "arn:aws:iam::aws:policy/ReadOnlyAccess"}
+      ],
+      "GroupList": ["Engineers"],
+      "UserPolicyList": []
+    },
+    {
+      "UserName": "data.analyst",
+      "Arn": "arn:aws:iam::200000000002:user/data.analyst",
+      "AttachedManagedPolicies": [],
+      "GroupList": ["Analysts"],
+      "UserPolicyList": [
+        {
+          "PolicyName": "DataAccess",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {"Effect": "Allow", "Action": ["athena:*", "glue:GetDatabase", "s3:GetObject"], "Resource": "*"}
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "GroupDetailList": [
+    {
+      "GroupName": "LegacyAccess",
+      "Arn": "arn:aws:iam::200000000002:group/LegacyAccess",
+      "AttachedManagedPolicies": [],
+      "GroupPolicyList": [
+        {
+          "PolicyName": "LegacyGrant",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {"Effect": "Allow", "Action": ["iam:PassRole", "iam:ListRoles", "iam:AddUserToGroup"], "Resource": "*"}
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "GroupName": "Engineers",
+      "Arn": "arn:aws:iam::200000000002:group/Engineers",
+      "AttachedManagedPolicies": [{"PolicyName": "AmazonEC2ReadOnlyAccess", "PolicyArn": "arn:aws:iam::aws:policy/AmazonEC2ReadOnlyAccess"}],
+      "GroupPolicyList": []
+    },
+    {
+      "GroupName": "Analysts",
+      "Arn": "arn:aws:iam::200000000002:group/Analysts",
+      "AttachedManagedPolicies": [],
+      "GroupPolicyList": []
+    }
+  ],
+  "RoleDetailList": [
+    {
+      "RoleName": "AdminBreakglass",
+      "Arn": "arn:aws:iam::200000000002:role/AdminBreakglass",
+      "AssumeRolePolicyDocument": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {"Effect": "Allow", "Principal": {"AWS": "arn:aws:iam::200000000002:user/veteran.engineer"}, "Action": "sts:AssumeRole"}
+        ]
+      },
+      "AttachedManagedPolicies": [
+        {"PolicyName": "AdministratorAccess", "PolicyArn": "arn:aws:iam::aws:policy/AdministratorAccess"}
+      ],
+      "RolePolicyList": []
+    }
+  ],
+  "Policies": []
+}

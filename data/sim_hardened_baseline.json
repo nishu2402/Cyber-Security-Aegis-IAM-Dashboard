@@ -1,0 +1,57 @@
+{
+  "UserDetailList": [
+    {
+      "UserName": "scoped.developer",
+      "Arn": "arn:aws:iam::500000000005:user/scoped.developer",
+      "AttachedManagedPolicies": [],
+      "GroupList": ["DevReadOnly"],
+      "UserPolicyList": []
+    },
+    {
+      "UserName": "deploy.bot",
+      "Arn": "arn:aws:iam::500000000005:user/deploy.bot",
+      "AttachedManagedPolicies": [],
+      "GroupList": [],
+      "UserPolicyList": [
+        {
+          "PolicyName": "ScopedDeploy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": ["ecr:PutImage", "ecr:InitiateLayerUpload"],
+                "Resource": "arn:aws:ecr:us-east-1:500000000005:repository/web-app"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "GroupDetailList": [
+    {
+      "GroupName": "DevReadOnly",
+      "Arn": "arn:aws:iam::500000000005:group/DevReadOnly",
+      "AttachedManagedPolicies": [
+        {"PolicyName": "ReadOnlyAccess", "PolicyArn": "arn:aws:iam::aws:policy/ReadOnlyAccess"}
+      ],
+      "GroupPolicyList": []
+    }
+  ],
+  "RoleDetailList": [
+    {
+      "RoleName": "AppRunnerExecutionRole",
+      "Arn": "arn:aws:iam::500000000005:role/AppRunnerExecutionRole",
+      "AssumeRolePolicyDocument": {
+        "Version": "2012-10-17",
+        "Statement": [{"Effect": "Allow", "Principal": {"Service": "tasks.apprunner.amazonaws.com"}, "Action": "sts:AssumeRole"}]
+      },
+      "AttachedManagedPolicies": [
+        {"PolicyName": "AWSAppRunnerServicePolicyForECRAccess", "PolicyArn": "arn:aws:iam::aws:policy/service-role/AWSAppRunnerServicePolicyForECRAccess"}
+      ],
+      "RolePolicyList": []
+    }
+  ],
+  "Policies": []
+}

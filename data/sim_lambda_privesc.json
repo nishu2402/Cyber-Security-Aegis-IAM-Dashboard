@@ -1,0 +1,80 @@
+{
+  "UserDetailList": [
+    {
+      "UserName": "lambda.dev",
+      "Arn": "arn:aws:iam::300000000003:user/lambda.dev",
+      "AttachedManagedPolicies": [],
+      "GroupList": [],
+      "UserPolicyList": [
+        {
+          "PolicyName": "LambdaDevAccess",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "lambda:CreateFunction",
+                  "lambda:UpdateFunctionCode",
+                  "lambda:InvokeFunction",
+                  "lambda:GetFunction",
+                  "iam:PassRole"
+                ],
+                "Resource": "*"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "ec2.dev",
+      "Arn": "arn:aws:iam::300000000003:user/ec2.dev",
+      "AttachedManagedPolicies": [],
+      "GroupList": [],
+      "UserPolicyList": [
+        {
+          "PolicyName": "EC2DevAccess",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": ["ec2:RunInstances", "ec2:DescribeInstances", "iam:PassRole"],
+                "Resource": "*"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "GroupDetailList": [],
+  "RoleDetailList": [
+    {
+      "RoleName": "LambdaAdminExecutionRole",
+      "Arn": "arn:aws:iam::300000000003:role/LambdaAdminExecutionRole",
+      "AssumeRolePolicyDocument": {
+        "Version": "2012-10-17",
+        "Statement": [{"Effect": "Allow", "Principal": {"Service": "lambda.amazonaws.com"}, "Action": "sts:AssumeRole"}]
+      },
+      "AttachedManagedPolicies": [
+        {"PolicyName": "AdministratorAccess", "PolicyArn": "arn:aws:iam::aws:policy/AdministratorAccess"}
+      ],
+      "RolePolicyList": []
+    },
+    {
+      "RoleName": "EC2InstanceProfile",
+      "Arn": "arn:aws:iam::300000000003:role/EC2InstanceProfile",
+      "AssumeRolePolicyDocument": {
+        "Version": "2012-10-17",
+        "Statement": [{"Effect": "Allow", "Principal": {"Service": "ec2.amazonaws.com"}, "Action": "sts:AssumeRole"}]
+      },
+      "AttachedManagedPolicies": [
+        {"PolicyName": "PowerUserAccess", "PolicyArn": "arn:aws:iam::aws:policy/PowerUserAccess"}
+      ],
+      "RolePolicyList": []
+    }
+  ],
+  "Policies": []
+}

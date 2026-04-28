@@ -1,0 +1,321 @@
+{
+  "UserDetailList": [
+    {
+      "Path": "/",
+      "UserName": "alice.developer",
+      "UserId": "AIDADEV001",
+      "Arn": "arn:aws:iam::555555555555:user/alice.developer",
+      "GroupList": ["Developers"],
+      "AttachedManagedPolicies": [
+        {"PolicyName": "ReadOnlyAccess", "PolicyArn": "arn:aws:iam::aws:policy/ReadOnlyAccess"}
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "AssumeDeployRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": "sts:AssumeRole",
+                "Resource": "arn:aws:iam::555555555555:role/deploy-role"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "Path": "/",
+      "UserName": "bob.contractor",
+      "UserId": "AIDACON002",
+      "Arn": "arn:aws:iam::555555555555:user/bob.contractor",
+      "GroupList": [],
+      "AttachedManagedPolicies": [
+        {"PolicyName": "AdministratorAccess", "PolicyArn": "arn:aws:iam::aws:policy/AdministratorAccess"}
+      ],
+      "UserPolicyList": []
+    },
+    {
+      "Path": "/",
+      "UserName": "carol.iamops",
+      "UserId": "AIDAOPS003",
+      "Arn": "arn:aws:iam::555555555555:user/carol.iamops",
+      "GroupList": ["IAMTeam"],
+      "AttachedManagedPolicies": [
+        {"PolicyName": "IAMFullAccess", "PolicyArn": "arn:aws:iam::aws:policy/IAMFullAccess"}
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "SelfPolicyAudit",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "iam:PutUserPolicy",
+                  "iam:GetUserPolicy",
+                  "iam:CreateAccessKey",
+                  "iam:ListAccessKeys",
+                  "iam:UpdateAssumeRolePolicy",
+                  "iam:ListRoles",
+                  "iam:CreatePolicyVersion",
+                  "iam:SetDefaultPolicyVersion"
+                ],
+                "Resource": "*"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "Path": "/",
+      "UserName": "dave.svcaccount",
+      "UserId": "AIDASVC004",
+      "Arn": "arn:aws:iam::555555555555:user/dave.svcaccount",
+      "GroupList": [],
+      "AttachedManagedPolicies": [],
+      "UserPolicyList": [
+        {
+          "PolicyName": "WildcardEverywhere",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "NotAction": ["aws-portal:*"],
+                "Resource": "*"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "Path": "/",
+      "UserName": "eve.federated",
+      "UserId": "AIDAFED005",
+      "Arn": "arn:aws:iam::555555555555:user/eve.federated",
+      "GroupList": ["Auditors"],
+      "AttachedManagedPolicies": [
+        {"PolicyName": "SecurityAudit", "PolicyArn": "arn:aws:iam::aws:policy/SecurityAudit"}
+      ],
+      "UserPolicyList": [
+        {
+          "PolicyName": "FederatedAssumePrivileged",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": ["sts:AssumeRoleWithSAML", "sts:AssumeRole"],
+                "Resource": [
+                  "arn:aws:iam::555555555555:role/admin-role",
+                  "arn:aws:iam::555555555555:role/deploy-role"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "GroupDetailList": [
+    {
+      "Path": "/",
+      "GroupName": "Developers",
+      "GroupId": "AGPADEV001",
+      "Arn": "arn:aws:iam::555555555555:group/Developers",
+      "AttachedManagedPolicies": [
+        {"PolicyName": "AmazonEC2ReadOnlyAccess", "PolicyArn": "arn:aws:iam::aws:policy/AmazonEC2ReadOnlyAccess"}
+      ],
+      "GroupPolicyList": [
+        {
+          "PolicyName": "DeveloperPassRole",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": ["iam:PassRole", "iam:ListRoles"],
+                "Resource": "*"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "Path": "/",
+      "GroupName": "IAMTeam",
+      "GroupId": "AGPAIAM001",
+      "Arn": "arn:aws:iam::555555555555:group/IAMTeam",
+      "AttachedManagedPolicies": [],
+      "GroupPolicyList": [
+        {
+          "PolicyName": "IAMTeamInline",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": ["iam:AttachRolePolicy", "iam:AttachUserPolicy", "iam:AddUserToGroup"],
+                "Resource": "*"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "Path": "/",
+      "GroupName": "Auditors",
+      "GroupId": "AGPAAUD001",
+      "Arn": "arn:aws:iam::555555555555:group/Auditors",
+      "AttachedManagedPolicies": [
+        {"PolicyName": "ReadOnlyAccess", "PolicyArn": "arn:aws:iam::aws:policy/ReadOnlyAccess"}
+      ],
+      "GroupPolicyList": []
+    }
+  ],
+  "RoleDetailList": [
+    {
+      "Path": "/",
+      "RoleName": "admin-role",
+      "RoleId": "AROAADMIN001",
+      "Arn": "arn:aws:iam::555555555555:role/admin-role",
+      "AssumeRolePolicyDocument": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Principal": {"AWS": "arn:aws:iam::555555555555:user/eve.federated"},
+            "Action": "sts:AssumeRole"
+          }
+        ]
+      },
+      "AttachedManagedPolicies": [
+        {"PolicyName": "AdministratorAccess", "PolicyArn": "arn:aws:iam::aws:policy/AdministratorAccess"}
+      ],
+      "RolePolicyList": []
+    },
+    {
+      "Path": "/",
+      "RoleName": "deploy-role",
+      "RoleId": "AROADEP001",
+      "Arn": "arn:aws:iam::555555555555:role/deploy-role",
+      "AssumeRolePolicyDocument": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Principal": {"AWS": [
+              "arn:aws:iam::555555555555:user/alice.developer",
+              "arn:aws:iam::555555555555:user/eve.federated"
+            ]},
+            "Action": "sts:AssumeRole"
+          }
+        ]
+      },
+      "AttachedManagedPolicies": [],
+      "RolePolicyList": [
+        {
+          "PolicyName": "DeployRoleInline",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": ["iam:PassRole", "ec2:*", "lambda:UpdateFunctionCode"],
+                "Resource": "*"
+              },
+              {
+                "Effect": "Allow",
+                "Action": "sts:AssumeRole",
+                "Resource": "arn:aws:iam::555555555555:role/admin-role"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "Path": "/",
+      "RoleName": "lambda-execution-role",
+      "RoleId": "AROALAMBDA001",
+      "Arn": "arn:aws:iam::555555555555:role/lambda-execution-role",
+      "AssumeRolePolicyDocument": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Principal": {"Service": "lambda.amazonaws.com"},
+            "Action": "sts:AssumeRole"
+          }
+        ]
+      },
+      "AttachedManagedPolicies": [
+        {"PolicyName": "AWSLambdaBasicExecutionRole", "PolicyArn": "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"}
+      ],
+      "RolePolicyList": []
+    },
+    {
+      "Path": "/",
+      "RoleName": "wildcard-cross-account",
+      "RoleId": "AROAXACC001",
+      "Arn": "arn:aws:iam::555555555555:role/wildcard-cross-account",
+      "AssumeRolePolicyDocument": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Principal": {"AWS": "*"},
+            "Action": "sts:AssumeRole"
+          }
+        ]
+      },
+      "AttachedManagedPolicies": [
+        {"PolicyName": "PowerUserAccess", "PolicyArn": "arn:aws:iam::aws:policy/PowerUserAccess"}
+      ],
+      "RolePolicyList": []
+    }
+  ],
+  "Policies": [
+    {
+      "PolicyName": "CustomDangerousPolicy",
+      "PolicyId": "ANPACUSTOM001",
+      "Arn": "arn:aws:iam::555555555555:policy/CustomDangerousPolicy",
+      "DefaultVersionId": "v2",
+      "PolicyVersionList": [
+        {
+          "VersionId": "v1",
+          "IsDefaultVersion": false,
+          "Document": {
+            "Version": "2012-10-17",
+            "Statement": [{"Effect": "Allow", "Action": "s3:GetObject", "Resource": "*"}]
+          }
+        },
+        {
+          "VersionId": "v2",
+          "IsDefaultVersion": true,
+          "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "iam:CreateLoginProfile",
+                  "iam:UpdateLoginProfile",
+                  "iam:AttachUserPolicy"
+                ],
+                "Resource": "*"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
