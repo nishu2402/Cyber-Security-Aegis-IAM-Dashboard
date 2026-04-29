@@ -376,7 +376,7 @@ Cyber-Security-Aegis-IAM-Dashboard/
 
 ```bash
 # 1. Clone
-git clone https://github.com/YOUR-USERNAME/Cyber-Security-Aegis-IAM-Dashboard.git
+git clone https://github.com/nishu2402/Cyber-Security-Aegis-IAM-Dashboard.git
 cd Cyber-Security-Aegis-IAM-Dashboard
 
 # 2. Virtual environment
@@ -416,7 +416,7 @@ The dashboard ships with **7 pre-built simulation scenarios**. Click any card in
 | 🟠 **Federated Chaos** | High | Wildcard cross-account trust + loose OIDC sub claims + SAML admin |
 | 🟢 **Hardened Baseline** | None | Properly scoped least-privilege — should score A+ |
 
-### 3️⃣ Upload a Real AWS Export
+### 2️⃣ Upload a Real AWS Export
 
 ```bash
 # Generate the export
@@ -428,7 +428,7 @@ Then click **+ Choose JSON (auto-uploads)** in the dashboard. The HUD repaints a
 
 A bundled real-world fixture lives at `data/sample_aws_realworld.json` for offline testing — five users, four roles, three groups, federated SAML trust, NotAction wildcard, cross-account assume-role.
 
-### 4️⃣ Other Cloud Exports
+### 3️⃣ Other Cloud Exports
 
 | Cloud | Export Command |
 |---|---|
@@ -437,7 +437,7 @@ A bundled real-world fixture lives at `data/sample_aws_realworld.json` for offli
 
 (See *Intel Retrieval Lab* in the dashboard for full reference.)
 
-### 5️⃣ Generate an Intelligence Report
+### 4️⃣ Generate an Intelligence Report
 
 Click **Export PDF** for a branded dark-mode report. Or pull raw findings via:
 
@@ -599,7 +599,7 @@ Owned and Developed by Nisarg Chasmawala (Shroff), Jatin Kumar, and Santhakumar 
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/github/stars/YOUR-USERNAME/Cyber-Security-Aegis-IAM-Dashboard?style=social" alt="Stars"/>
-  <img src="https://img.shields.io/github/forks/YOUR-USERNAME/Cyber-Security-Aegis-IAM-Dashboard?style=social" alt="Forks"/>
-  <img src="https://img.shields.io/github/watchers/YOUR-USERNAME/Cyber-Security-Aegis-IAM-Dashboard?style=social" alt="Watchers"/>
+  <img src="https://img.shields.io/github/stars/nishu2402/Cyber-Security-Aegis-IAM-Dashboard?style=social" alt="Stars"/>
+  <img src="https://img.shields.io/github/forks/nishu2402/Cyber-Security-Aegis-IAM-Dashboard?style=social" alt="Forks"/>
+  <img src="https://img.shields.io/github/watchers/nishu2402/Cyber-Security-Aegis-IAM-Dashboard?style=social" alt="Watchers"/>
 </p>
