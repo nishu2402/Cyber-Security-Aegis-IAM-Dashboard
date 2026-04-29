@@ -76,14 +76,14 @@
   <table>
     <tr>
       <td align="center" width="33%">
-        <img src="https://avatars.githubusercontent.com/u/0?v=4&size=120" width="100" style="border-radius:50%;border:2px solid #00f5ff" alt="Nisarg"/>
+        <img width="420" height="420" alt="IMG_3362" src="https://github.com/user-attachments/assets/8de9e0f9-4c1c-407b-8041-9bf67596e040" />
         <br/>
         <strong>Nisarg Chasmawala (Shroff)</strong>
         <br/>
-        <sub>Cybersecurity Engineer</sub>
+        <sub>Pen-Tester/Cybersecurity Engineer</sub>
         <br/>
-        <a href="https://github.com/"><img src="https://img.shields.io/badge/GitHub-Profile-181717?style=flat-square&logo=github&logoColor=white" alt="GitHub"/></a>
-        <a href="https://www.linkedin.com/"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
+        <a href="https://github.com/nishu2402"><img src="https://img.shields.io/badge/GitHub-Profile-181717?style=flat-square&logo=github&logoColor=white" alt="GitHub"/></a>
+        <a href="https://www.linkedin.com/in/nisarg-chasmawala"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
       </td>
       <td align="center" width="33%">
         <img src="https://avatars.githubusercontent.com/u/0?v=4&size=120" width="100" style="border-radius:50%;border:2px solid #00f5ff" alt="Jatin"/>
