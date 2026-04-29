@@ -1,7 +1,7 @@
 # 🛡️ AEGIS-IAM DASHBOARD
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&height=300&color=0:020024,15:090979,30:3a0ca3,45:7209b7,60:00f5ff,75:00ffcc,90:72efdd,100:020024&text=AEGIS-IAM%20DASHBOARD&fontSize=44&fontAlignY=38&fontColor=ffffff&animation=twinkling&desc=Privilege%20Escalation%20%26%20MITRE%20ATT%26CK%20Intelligence%20HUD&descAlignY=65&descSize=20"/>
+  <img src="https://capsule-render.vercel.app/api?type=waving&amp;height=300&amp;color=gradient&amp;customColorList=1A1D21,2C3136,495057,D4AF37,F1C40F,FFEFA1&amp;text=AEGIS-IAM%20DASHBOARD&amp;fontSize=44&amp;fontAlignY=38&amp;fontColor=ffffff&amp;animation=twinkling&amp;desc=Privilege%20Escalation%20and%20MITRE%20ATTACK%20Intelligence%20HUD&amp;descAlignY=65&amp;descSize=20" alt="AEGIS-IAM Dashboard Gray Gold" />
 </p>
 
 <p align="center">
