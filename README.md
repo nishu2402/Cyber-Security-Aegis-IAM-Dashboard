@@ -86,7 +86,7 @@
         <a href="https://www.linkedin.com/in/nisarg-chasmawala"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
       </td>
       <td align="center" width="33%">
-        <img src="https://avatars.githubusercontent.com/u/0?v=4&size=120" width="100" style="border-radius:50%;border:2px solid #00f5ff" alt="Jatin"/>
+        <img width="3024" height="4032" alt="IMG_2293" src="https://github.com/user-attachments/assets/b819a47b-0460-4098-b98f-4cf8b1189f9a" />
         <br/>
         <strong>Jatin Kumar</strong>
         <br/>
@@ -96,7 +96,7 @@
         <a href="https://www.linkedin.com/in/jatinkumar78"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
       </td>
       <td align="center" width="33%">
-        <img src="https://avatars.githubusercontent.com/u/0?v=4&size=120" width="100" style="border-radius:50%;border:2px solid #00f5ff" alt="Santhakumar"/>
+        <img width="2650" height="3534" alt="IMG_3249" src="https://github.com/user-attachments/assets/adcb474e-68ed-4980-8110-66025d13b864" />
         <br/>
         <strong>Santhakumar Parivalla</strong>
         <br/>
