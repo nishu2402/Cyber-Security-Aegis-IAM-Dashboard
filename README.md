@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=0:00f5ff,25:7209b7,50:00ffcc,75:72efdd,100:00f5ff"/>
+  <img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=0:0A0A0C,25:7209b7,50:00ffcc,75:72efdd,100:00E5FF"/>
 </p>
 
 <p align="center">
@@ -72,6 +72,10 @@
 
 ## <a id="authors"></a>👾 Authors
 
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=0:0A0A0C,25:7209b7,50:00ffcc,75:72efdd,100:00E5FF"/>
+</p>
+
 <div align="center">
   <table>
     <tr>
@@ -117,6 +121,10 @@
 
 ## <a id="project-summary"></a>🎯 Project Summary
 
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=0:0A0A0C,25:7209b7,50:00ffcc,75:72efdd,100:00E5FF"/>
+</p>
+
 **Aegis-IAM Dashboard** is an enterprise-grade IAM risk-analysis HUD built for blue teams who need a fast, visual second-opinion on real-world identity exports — without standing up a full data pipeline.
 
 Drop in any AWS `aws iam get-account-authorization-details` JSON and the engine immediately returns:
@@ -136,8 +144,14 @@ The entire HUD is single-binary Flask + Jinja with a Tailwind CDN frontend. No b
 
 ## <a id="core-idea"></a>💡 Core Idea
 
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=0:0A0A0C,25:7209b7,50:00ffcc,75:72efdd,100:00E5FF"/>
+</p>
+
 Most cloud security tools are heavy: agents, ingestion pipelines, query languages, paid SaaS dashboards. The **first 5 minutes of incident-response triage** rarely needs any of that — the responder just wants to point at an IAM JSON dump and ask:
 
+<div align="center">
+  
 | Question | Aegis Answer |
 |---|---|
 | Who can become admin from where? | **Privilege Escalation Chains** module |
@@ -147,6 +161,8 @@ Most cloud security tools are heavy: agents, ingestion pipelines, query language
 | How exposed is this account, on a single number? | **Posture Score Engine** |
 | What do I do *now* to fix it? | **Dynamic Playbook** module |
 
+</div>
+
 Aegis treats the IAM export as the **only source of truth** for a single shot of analysis. Stateless, self-contained, runs offline. Useful as a SOC analyst's pocket scanner, an interview takehome, a security-class lab, or a quick Friday-afternoon audit.
 
 <p align="right"><a href="#table-of-contents">⬆ Back to Top</a></p>
@@ -154,6 +170,10 @@ Aegis treats the IAM export as the **only source of truth** for a single shot of
 ---
 
 ## <a id="complete-pipeline"></a>🔁 Complete Pipeline
+
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=0:0A0A0C,25:7209b7,50:00ffcc,75:72efdd,100:00E5FF"/>
+</p>
 
 ```
 ┌──────────────────┐    ┌─────────────────┐    ┌────────────────────┐    ┌──────────────────┐
@@ -189,6 +209,12 @@ Aegis treats the IAM export as the **only source of truth** for a single shot of
 
 ## <a id="key-features"></a>✨ Key Features
 
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=0:0A0A0C,25:7209b7,50:00ffcc,75:72efdd,100:00E5FF"/>
+</p>
+
+<div align="center">
+  
 | Module | Capability |
 |---|---|
 | 🎯 **Posture Score Engine** | 0–100 composite score with letter grade (A+ → F) and transparent factor breakdown. Animated SVG ring fills proportional to score. |
@@ -205,11 +231,17 @@ Aegis treats the IAM export as the **only source of truth** for a single shot of
 | 📚 **Dynamic Playbooks** | Auto-generated CLI patch steps + strategic guidance per finding. |
 | 🛡️ **Hardened Inputs** | XSS-tested. `tojson \| safe` payload encoding. 2 MB upload cap. CSP / X-Frame-Options / Referrer-Policy headers. |
 
+</div>
+
 <p align="right"><a href="#table-of-contents">⬆ Back to Top</a></p>
 
 ---
 
 ## <a id="mitre-coverage"></a>🗺️ MITRE ATT&CK Coverage
+
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=0:0A0A0C,25:7209b7,50:00ffcc,75:72efdd,100:00E5FF"/>
+</p>
 
 Every IAM/STS verb in the map is tagged with one or more ATT&CK tactics. Compound tactics (e.g. `Lateral Movement / Privilege Escalation / Persistence`) decompose across all matching tactic columns in the heatmap.
 
@@ -238,7 +270,13 @@ Every IAM/STS verb in the map is tagged with one or more ATT&CK tactics. Compoun
 
 ## <a id="posture-engine"></a>📊 Posture Scoring Engine
 
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=0:0A0A0C,25:7209b7,50:00ffcc,75:72efdd,100:00E5FF"/>
+</p>
+
 Posture Score is a transparent, deterministic composite. Score starts at **100** and each detected risk subtracts a weighted delta:
+
+<div align="center">
 
 | Risk Type | Weight per Finding |
 |---|:---:|
@@ -248,6 +286,8 @@ Posture Score is a transparent, deterministic composite. Score starts at **100**
 | 🟢 Low Escalation | **−3** |
 | 💀 Over-Privileged Principal | **−8** |
 | ⚠️ Separation-of-Duties Conflict | **−5** |
+
+</div>
 
 Final score is floored at zero. Each contributing factor surfaces in the *Posture Score Breakdown* module, so teams can see exactly which findings drove the grade.
 
@@ -270,6 +310,12 @@ Final score is floored at zero. Each contributing factor surfaces in the *Postur
 
 ## <a id="dashboard-modules"></a>🖥️ Dashboard Modules
 
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=0:0A0A0C,25:7209b7,50:00ffcc,75:72efdd,100:00E5FF"/>
+</p>
+
+<div align="center">
+
 | # | Module | Purpose |
 |---|---|---|
 | 01 | **Sentinel Header** | Status pill, posture grade pill, animated posture-score ring |
@@ -281,6 +327,8 @@ Final score is floored at zero. Each contributing factor surfaces in the *Postur
 | 07 | **Posture Score Breakdown** | Transparent per-finding score deductions |
 | 08 | **Intelligence Report Preview** | PDF export source — branded, ready to share |
 
+</div>
+
 Plus secondary views: **Trust Graph** (vis-network), **Dynamic Playbook** (per-finding remediation), **Intel Retrieval Lab** (cloud export instructions).
 
 <p align="right"><a href="#table-of-contents">⬆ Back to Top</a></p>
@@ -288,6 +336,10 @@ Plus secondary views: **Trust Graph** (vis-network), **Dynamic Playbook** (per-f
 ---
 
 ## <a id="tech-stack"></a>⚡ Tech Stack
+
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=0:0A0A0C,25:7209b7,50:00ffcc,75:72efdd,100:00E5FF"/>
+</p>
 
 <div align="center">
 
@@ -308,6 +360,12 @@ Plus secondary views: **Trust Graph** (vis-network), **Dynamic Playbook** (per-f
 
 ## <a id="api-endpoints"></a>🌐 API Endpoints
 
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=0:0A0A0C,25:7209b7,50:00ffcc,75:72efdd,100:00E5FF"/>
+</p>
+
+<div align="center">
+  
 | Route | Method | Purpose |
 |---|:---:|---|
 | `/` | GET | Main HUD |
@@ -320,12 +378,20 @@ Plus secondary views: **Trust Graph** (vis-network), **Dynamic Playbook** (per-f
 | `/api/export/json` | GET | Full intelligence JSON download |
 | `/api/export/csv` | GET | Flat CSV of all findings |
 
+</div>
+  
 <p align="right"><a href="#table-of-contents">⬆ Back to Top</a></p>
 
 ---
 
 ## <a id="keyboard-shortcuts"></a>⌨️ Keyboard Shortcuts
 
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=0:0A0A0C,25:7209b7,50:00ffcc,75:72efdd,100:00E5FF"/>
+</p>
+
+<div align="center">
+  
 | Key | Action |
 |:---:|---|
 | `Ctrl/Cmd + K` | Open command palette |
@@ -333,11 +399,17 @@ Plus secondary views: **Trust Graph** (vis-network), **Dynamic Playbook** (per-f
 | `Enter` | Open selected item |
 | `Esc` | Close palette / drawer |
 
+</div>
+  
 <p align="right"><a href="#table-of-contents">⬆ Back to Top</a></p>
 
 ---
 
 ## <a id="project-structure"></a>📁 Project Structure
+
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=0:0A0A0C,25:7209b7,50:00ffcc,75:72efdd,100:00E5FF"/>
+</p>
 
 ```
 Cyber-Security-Aegis-IAM-Dashboard/
@@ -365,6 +437,10 @@ Cyber-Security-Aegis-IAM-Dashboard/
 ---
 
 ## <a id="installation"></a>⚙️ Installation
+
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=0:0A0A0C,25:7209b7,50:00ffcc,75:72efdd,100:00E5FF"/>
+</p>
 
 ### Prerequisites
 
@@ -402,10 +478,16 @@ Open **<http://127.0.0.1:5000>** in your browser.
 
 ## <a id="usage-guide"></a>🚀 Usage Guide
 
-### 1️⃣ Pre-Built Simulations (Instant Demos)
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=0:0A0A0C,25:7209b7,50:00ffcc,75:72efdd,100:00E5FF"/>
+</p>
+
+### 1 Pre-Built Simulations (Instant Demos)
 
 The dashboard ships with **7 pre-built simulation scenarios**. Click any card in the *Simulation Library* section to load it instantly.
 
+<div align="center">
+  
 | Scenario | Severity | What It Models |
 |---|:---:|---|
 | 🟢 **Quick Demo** | Low | Minimal AWS export — single escalation, ideal first look |
@@ -416,7 +498,9 @@ The dashboard ships with **7 pre-built simulation scenarios**. Click any card in
 | 🟠 **Federated Chaos** | High | Wildcard cross-account trust + loose OIDC sub claims + SAML admin |
 | 🟢 **Hardened Baseline** | None | Properly scoped least-privilege — should score A+ |
 
-### 3️⃣ Upload a Real AWS Export
+</div>
+
+### 2 Upload a Real AWS Export
 
 ```bash
 # Generate the export
@@ -428,16 +512,20 @@ Then click **+ Choose JSON (auto-uploads)** in the dashboard. The HUD repaints a
 
 A bundled real-world fixture lives at `data/sample_aws_realworld.json` for offline testing — five users, four roles, three groups, federated SAML trust, NotAction wildcard, cross-account assume-role.
 
-### 4️⃣ Other Cloud Exports
+### 3 Other Cloud Exports
 
+<div align="center">
+  
 | Cloud | Export Command |
 |---|---|
 | **Azure** | `az role assignment list --all --output json > azure_iam.json` |
 | **GCP** | `gcloud projects get-iam-policy PROJECT_ID --format=json > gcp_iam.json` |
 
+</div>
+  
 (See *Intel Retrieval Lab* in the dashboard for full reference.)
 
-### 5️⃣ Generate an Intelligence Report
+### 4 Generate an Intelligence Report
 
 Click **Export PDF** for a branded dark-mode report. Or pull raw findings via:
 
@@ -451,6 +539,10 @@ curl http://127.0.0.1:5000/api/export/csv    > findings.csv
 ---
 
 ## <a id="deployment"></a>☁️ Deployment
+
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=0:0A0A0C,25:7209b7,50:00ffcc,75:72efdd,100:00E5FF"/>
+</p>
 
 The app is a standard WSGI Flask application — runs anywhere Python runs.
 
@@ -491,6 +583,10 @@ docker run -p 5000:5000 -e AEGIS_SECRET_KEY=$(openssl rand -hex 32) aegis-iam
 
 ## <a id="security-notes"></a>🔒 Security Notes
 
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=0:0A0A0C,25:7209b7,50:00ffcc,75:72efdd,100:00E5FF"/>
+</p>
+
 <div align="center">
 
 | Control | Implementation |
@@ -519,6 +615,10 @@ docker run -p 5000:5000 -e AEGIS_SECRET_KEY=$(openssl rand -hex 32) aegis-iam
 ---
 
 ## <a id="test-coverage"></a>🧪 Verified Test Coverage
+
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=0:0A0A0C,25:7209b7,50:00ffcc,75:72efdd,100:00E5FF"/>
+</p>
 
 | Test | Result |
 |---|:---:|
@@ -550,6 +650,10 @@ docker run -p 5000:5000 -e AEGIS_SECRET_KEY=$(openssl rand -hex 32) aegis-iam
 
 ## <a id="future-roadmap"></a>🛣️ Future Roadmap
 
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=0:0A0A0C,25:7209b7,50:00ffcc,75:72efdd,100:00E5FF"/>
+</p>
+
 - 🔌 **Native Azure RBAC ingestion** — parse `az role assignment list` directly without normalization shims.
 - 🧬 **Native GCP IAM ingestion** — full `gcloud projects get-iam-policy` schema support.
 - 🧠 **Behavioral baseline mode** — diff today's export against a saved snapshot to detect privilege drift over time.
@@ -567,6 +671,10 @@ docker run -p 5000:5000 -e AEGIS_SECRET_KEY=$(openssl rand -hex 32) aegis-iam
 
 ## <a id="disclaimer"></a>⚠️ Disclaimer
 
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=0:0A0A0C,25:7209b7,50:00ffcc,75:72efdd,100:00E5FF"/>
+</p>
+
 > **Aegis-IAM Dashboard** is a defensive blue-team analysis tool. It is intended **exclusively for use on IAM exports from systems you own or are explicitly authorized to assess.** The authors, maintainers, and contributors accept no liability for misuse.
 >
 > The MITRE ATT&CK mappings, severity weights, and posture scoring are heuristic and educational — they are not a substitute for a full security audit, a CSPM platform, or qualified human review. Findings should be validated by a security engineer before remediation actions are taken in production.
@@ -578,6 +686,10 @@ docker run -p 5000:5000 -e AEGIS_SECRET_KEY=$(openssl rand -hex 32) aegis-iam
 ---
 
 ## <a id="license"></a>📜 License
+
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=0:0A0A0C,25:7209b7,50:00ffcc,75:72efdd,100:00E5FF"/>
+</p>
 
 Distributed under the **MIT License**. See `LICENSE` for full text.
 
