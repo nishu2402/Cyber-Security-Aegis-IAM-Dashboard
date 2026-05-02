@@ -1,7 +1,7 @@
 # 🛡️ AEGIS-IAM DASHBOARD
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&amp;height=300&amp;color=gradient&amp;customColorList=1A1D21,2C3136,495057,D4AF37,F1C40F,FFEFA1&amp;text=AEGIS-IAM%20DASHBOARD&amp;fontSize=44&amp;fontAlignY=38&amp;fontColor=ffffff&amp;animation=twinkling&amp;desc=Privilege%20Escalation%20and%20MITRE%20ATTACK%20Intelligence%20HUD&amp;descAlignY=65&amp;descSize=20" alt="AEGIS-IAM Dashboard Gray Gold" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&amp;height=300&amp;color=0:0A0A0C,100:00E5FF&amp;text=AEGIS-IAM%20DASHBOARD&amp;fontSize=44&amp;fontAlignY=38&amp;fontColor=ffffff&amp;animation=twinkling&amp;desc=Privilege%20Escalation%20and%20MITRE%20ATTACK%20Intelligence%20HUD&amp;descAlignY=65&amp;descSize=20" alt="AEGIS-IAM Dashboard Cyberpunk Neon" />
 </p>
 
 <p align="center">
@@ -92,7 +92,7 @@
         <br/>
         <sub>Cybersecurity & Full-Stack Engineer</sub>
         <br/>
-        <a href="https://github.com/"><img src="https://img.shields.io/badge/GitHub-Profile-181717?style=flat-square&logo=github&logoColor=white" alt="GitHub"/></a>
+        <a href="https://github.com/Jatinkumar78"><img src="https://img.shields.io/badge/GitHub-Profile-181717?style=flat-square&logo=github&logoColor=white" alt="GitHub"/></a>
         <a href="https://www.linkedin.com/in/jatinkumar78"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
       </td>
       <td align="center" width="33%">
