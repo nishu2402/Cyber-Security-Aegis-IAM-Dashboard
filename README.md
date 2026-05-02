@@ -599,7 +599,7 @@ Owned and Developed by Nisarg Chasmawala (Shroff), Jatin Kumar, and Santhakumar 
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/github/stars/YOUR-USERNAME/Cyber-Security-Aegis-IAM-Dashboard?style=social" alt="Stars"/>
-  <img src="https://img.shields.io/github/forks/YOUR-USERNAME/Cyber-Security-Aegis-IAM-Dashboard?style=social" alt="Forks"/>
-  <img src="https://img.shields.io/github/watchers/YOUR-USERNAME/Cyber-Security-Aegis-IAM-Dashboard?style=social" alt="Watchers"/>
+  <img src="https://img.shields.io/github/stars/nishu2402/Cyber-Security-Aegis-IAM-Dashboard?style=social" alt="Stars"/>
+  <img src="https://img.shields.io/github/forks/nishu2402/Cyber-Security-Aegis-IAM-Dashboard?style=social" alt="Forks"/>
+  <img src="https://img.shields.io/github/watchers/nishu2402/Cyber-Security-Aegis-IAM-Dashboard?style=social" alt="Watchers"/>
 </p>
