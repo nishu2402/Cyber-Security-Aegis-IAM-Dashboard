@@ -591,7 +591,7 @@ Owned and Developed by Nisarg Chasmawala (Shroff), Jatin Kumar, and Santhakumar 
 ---
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&height=140&color=0:020024,50:7209b7,100:00f5ff&section=footer&text=Stay%20Hardened&fontSize=28&fontColor=ffffff&fontAlignY=72"/>
+  <img src="https://capsule-render.vercel.app/api?type=waving&height=140&color=0:0A0A0C,100:00E5FF&amp&section=footer&text=Stay%20Hardened&fontSize=28&fontColor=ffffff&fontAlignY=72"/>
 </p>
 
 <p align="center">
