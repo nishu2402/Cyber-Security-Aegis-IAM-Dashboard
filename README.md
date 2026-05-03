@@ -1,7 +1,7 @@
 # 🛡️ AEGIS-IAM DASHBOARD
 
 <p align="center">
-<img src="https://capsule-render.vercel.app/api?type=waving&height=320&color=0:05070F,15:0D0A00,30:2D1500,45:6B3200,60:FF6B35,75:00D4AA,90:B388FF,100:05070F&text=AEGIS-IAM%20DASHBOARD&fontSize=40&fontAlignY=38&fontColor=ffffff&animation=twinkling&desc=Privilege%20Escalation%20%2B%20MITRE%20ATT%26CK%20Intelligence%20HUD%20%7C%2057%20Verbs%20%C2%B7%2010%20Tactics%20%C2%B7%2038%2F38%20Tests&descAlignY=65&descSize=18"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&height=320&color=0:05070F,15:0D0A00,30:2D1500,45:6B3200,60:FF6B35,75:00D4AA,90:B388FF,100:05070F&text=AEGIS-IAM%20DASHBOARD&fontSize=40&fontAlignY=38&fontColor=ffffff&animation=twinkling&desc=Privilege%20Escalation%20%2B%20MITRE%20ATTACK%20Intelligence%20HUD%20%7C%2057%20Verbs%20%C2%B7%2010%20Tactics%20%C2%B7%2038%2F38%20Tests&descAlignY=65&descSize=18" alt="Aegis-IAM Dashboard Banner"/>
 </p>
 
 <p align="center">
