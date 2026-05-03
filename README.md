@@ -1,49 +1,94 @@
 # 🛡️ AEGIS-IAM DASHBOARD
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&amp;height=300&amp;color=0:0A0A0C,100:00E5FF&amp;text=AEGIS-IAM%20DASHBOARD&amp;fontSize=44&amp;fontAlignY=38&amp;fontColor=ffffff&amp;animation=twinkling&amp;desc=Privilege%20Escalation%20and%20MITRE%20ATTACK%20Intelligence%20HUD&amp;descAlignY=65&amp;descSize=20" alt="AEGIS-IAM Dashboard Cyberpunk Neon" />
+<img src="https://capsule-render.vercel.app/api?type=waving&height=320&color=0:05070F,15:0D0A00,30:2D1500,45:6B3200,60:FF6B35,75:00D4AA,90:B388FF,100:05070F&text=AEGIS-IAM%20DASHBOARD&fontSize=40&fontAlignY=38&fontColor=ffffff&animation=twinkling&desc=Privilege%20Escalation%20%2B%20MITRE%20ATT%26CK%20Intelligence%20HUD%20%7C%2057%20Verbs%20%C2%B7%2010%20Tactics%20%C2%B7%2038%2F38%20Tests&descAlignY=65&descSize=18"/>
 </p>
 
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=28&duration=2600&pause=700&color=72EFDD&center=true&vCenter=true&width=1200&lines=Enterprise-Grade+IAM+Risk+Analysis+HUD;Privilege+Escalation+Graph+Traversal;MITRE+ATT%26CK+Heatmap+%E2%80%A2+10+Tactics;Posture+Score+Engine+%E2%80%A2+A%2B+to+F+Grading;Real-World+AWS+IAM+Authorization+Coverage"/>
+<img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&weight=700&size=26&duration=2500&pause=700&color=FF6B35&center=true&vCenter=true&width=1200&lines=Enterprise-Grade+IAM+Risk+Analysis+HUD;Privilege+Escalation+Graph+Traversal+%E2%80%94+User+%E2%86%92+Role+%E2%86%92+Admin;MITRE+ATT%26CK+Heatmap+%C2%B7+10+Tactics+%C2%B7+57+Mapped+Verbs;Posture+Score+Engine+%C2%B7+A%2B+to+F+Grading;38%2F38+E2E+Pass+%7C+Zero+False+Positives+%7C+Production+Ready"/>
 </p>
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=0:0A0A0C,25:7209b7,50:00ffcc,75:72efdd,100:00E5FF"/>
+<img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=0:FF6B35,25:FFB300,50:00D4AA,75:B388FF,100:FF3EA5"/>
 </p>
 
-<p align="center">
-  <strong>
-    Production-grade IAM Risk Analysis HUD with privilege-escalation graph traversal,
-    MITRE ATT&CK heatmap, posture scoring, and dynamic remediation playbooks.
-  </strong>
-</p>
+---
 
 <div align="center">
+
   <p>
-    <img src="https://img.shields.io/badge/Python-3.9+-00f5ff?style=for-the-badge&logo=python&logoColor=white" alt="Python"/>
-    <img src="https://img.shields.io/badge/Backend-Flask_3.0-090979?style=for-the-badge&logo=flask&logoColor=white" alt="Flask"/>
-    <img src="https://img.shields.io/badge/Engine-NetworkX-ff4d4d?style=for-the-badge&logo=neo4j&logoColor=white" alt="NetworkX"/>
-    <img src="https://img.shields.io/badge/Frontend-Tailwind_CDN-00ffcc?style=for-the-badge&logo=tailwindcss&logoColor=black" alt="Tailwind"/>
-    <img src="https://img.shields.io/badge/MITRE-57_Mapped_Verbs-7209b7?style=for-the-badge&logo=cncf&logoColor=white" alt="MITRE"/>
+    <img src="https://img.shields.io/badge/Python-3.9+-FF6B35?style=for-the-badge&logo=python&logoColor=white" alt="Python"/>
+    <img src="https://img.shields.io/badge/Backend-Flask_3.0-FFB300?style=for-the-badge&logo=flask&logoColor=black" alt="Flask"/>
+    <img src="https://img.shields.io/badge/Engine-NetworkX_3.2-00D4AA?style=for-the-badge&logo=neo4j&logoColor=black" alt="NetworkX"/>
+    <img src="https://img.shields.io/badge/Frontend-Tailwind_CDN-B388FF?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind"/>
+    <img src="https://img.shields.io/badge/MITRE-57_Mapped_Verbs-FF3EA5?style=for-the-badge&logo=cncf&logoColor=white" alt="MITRE"/>
   </p>
+
   <p>
-    <img src="https://img.shields.io/badge/ATT%26CK-10_Tactics_Covered-72efdd?style=flat-square&logo=mitre&logoColor=black" alt="ATT&CK"/>
-    <img src="https://img.shields.io/badge/Cloud-AWS_%7C_Azure_%7C_GCP-00f5ff?style=flat-square&logo=amazonaws&logoColor=black" alt="Cloud"/>
-    <img src="https://img.shields.io/badge/Tests-33%2F33_E2E_Pass-00ffcc?style=flat-square&logo=pytest&logoColor=black" alt="Tests"/>
-    <img src="https://img.shields.io/badge/Status-Production_Ready-32FF7E?style=flat-square&logo=statuspage&logoColor=black" alt="Status"/>
+    <img src="https://img.shields.io/badge/ATT%26CK-10_Tactics_Covered-FF6B35?style=flat-square&logo=mitre&logoColor=white" alt="ATT&CK"/>
+    <img src="https://img.shields.io/badge/Cloud-AWS_%7C_Azure_%7C_GCP-FFB300?style=flat-square&logo=amazonaws&logoColor=black" alt="Cloud"/>
+    <img src="https://img.shields.io/badge/Tests-38%2F38_E2E_Pass-00D4AA?style=flat-square&logo=pytest&logoColor=black" alt="Tests"/>
+    <img src="https://img.shields.io/badge/Status-Production_Ready-B388FF?style=flat-square&logo=statuspage&logoColor=white" alt="Status"/>
+    <img src="https://img.shields.io/badge/License-MIT-FF3EA5?style=flat-square&logo=opensourceinitiative&logoColor=white" alt="License"/>
   </p>
+
   <p>
-    <img src="https://img.shields.io/badge/Stars-★_Give_a_Star-72efdd?style=flat-square&logo=github&logoColor=black" alt="GitHub stars"/>
-    <img src="https://img.shields.io/badge/Forks-Share_Project-00f5ff?style=flat-square&logo=git&logoColor=black" alt="GitHub forks"/>
-    <img src="https://img.shields.io/badge/Issues-Report_Bug-ff4d4d?style=flat-square&logo=quicklook&logoColor=white" alt="GitHub issues"/>
-    <img src="https://img.shields.io/badge/License-MIT-00ffcc?style=flat-square&logo=opensourceinitiative&logoColor=black" alt="License"/>
+    <img src="https://img.shields.io/badge/Stars-★_Give_a_Star-FF6B35?style=flat-square&logo=github&logoColor=white" alt="Stars"/>
+    <img src="https://img.shields.io/badge/Forks-Share_This_Project-FFB300?style=flat-square&logo=git&logoColor=black" alt="Forks"/>
+    <img src="https://img.shields.io/badge/Issues-Report_a_Bug-00D4AA?style=flat-square&logo=quicklook&logoColor=black" alt="Issues"/>
   </p>
+
 </div>
 
 ---
 
-## <a id="table-of-contents"></a>📑 Table of Contents
+<a id="authors"></a>
+## 👾 Authors
+
+<p align="center">
+<img src="https://capsule-render.vercel.app/api?type=rect&height=4&color=0:FF6B35,50:00D4AA,100:B388FF"/>
+</p>
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center" width="33%">
+        <img width="420" height="420" alt="Nisarg" src="https://github.com/user-attachments/assets/8de9e0f9-4c1c-407b-8041-9bf67596e040" />
+        <br/>
+        <strong>Nisarg Chasmawala · HEAVEN</strong>
+        <br/>
+        <sub>Pen-Tester / Cybersecurity Engineer</sub>
+        <br/>
+        <a href="https://github.com/nishu2402"><img src="https://img.shields.io/badge/GitHub-Profile-FF6B35?style=flat-square&logo=github&logoColor=white" alt="GitHub"/></a>
+        <a href="https://www.linkedin.com/in/nisarg-chasmawala"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
+      </td>
+      <td align="center" width="33%">
+        <img width="420" height="560" alt="Jatin" src="https://github.com/user-attachments/assets/b819a47b-0460-4098-b98f-4cf8b1189f9a" />
+        <br/>
+        <strong>Jatin Kumar</strong>
+        <br/>
+        <sub>Cybersecurity & Full-Stack Engineer</sub>
+        <br/>
+        <a href="https://github.com/Jatinkumar78"><img src="https://img.shields.io/badge/GitHub-Profile-FF6B35?style=flat-square&logo=github&logoColor=white" alt="GitHub"/></a>
+        <a href="https://www.linkedin.com/in/jatinkumar78"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
+      </td>
+      <td align="center" width="33%">
+        <img width="420" height="560" alt="Santhakumar" src="https://github.com/user-attachments/assets/adcb474e-68ed-4980-8110-66025d13b864" />
+        <br/>
+        <strong>Santhakumar Parivalla</strong>
+        <br/>
+        <sub>Cybersecurity Engineer</sub>
+        <br/>
+        <a href="https://github.com/SanthakumarParivallal"><img src="https://img.shields.io/badge/GitHub-Profile-FF6B35?style=flat-square&logo=github&logoColor=white" alt="GitHub"/></a>
+        <a href="https://www.linkedin.com/in/santhakumar-parivallal-81307230a"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
+      </td>
+    </tr>
+  </table>
+</div>
+
+---
+
+## 📋 Table of Contents
 
 | # | Section |
 |---|---|
@@ -70,59 +115,11 @@
 
 ---
 
-## <a id="authors"></a>👾 Authors
+<a id="project-summary"></a>
+## 🎯 Project Summary
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=0:0A0A0C,25:7209b7,50:00ffcc,75:72efdd,100:00E5FF"/>
-</p>
-
-<div align="center">
-  <table>
-    <tr>
-      <td align="center" width="33%">
-        <img width="420" height="420" alt="IMG_3362" src="https://github.com/user-attachments/assets/8de9e0f9-4c1c-407b-8041-9bf67596e040" />
-        <br/>
-        <strong>Nisarg Chasmawala (Shroff)</strong>
-        <br/>
-        <sub>Pen-Tester/Cybersecurity Engineer</sub>
-        <br/>
-        <a href="https://github.com/nishu2402"><img src="https://img.shields.io/badge/GitHub-Profile-181717?style=flat-square&logo=github&logoColor=white" alt="GitHub"/></a>
-        <a href="https://www.linkedin.com/in/nisarg-chasmawala"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
-      </td>
-      <td align="center" width="33%">
-        <img width="3024" height="4032" alt="IMG_2293" src="https://github.com/user-attachments/assets/b819a47b-0460-4098-b98f-4cf8b1189f9a" />
-        <br/>
-        <strong>Jatin Kumar</strong>
-        <br/>
-        <sub>Cybersecurity & Full-Stack Engineer</sub>
-        <br/>
-        <a href="https://github.com/Jatinkumar78"><img src="https://img.shields.io/badge/GitHub-Profile-181717?style=flat-square&logo=github&logoColor=white" alt="GitHub"/></a>
-        <a href="https://www.linkedin.com/in/jatinkumar78"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
-      </td>
-      <td align="center" width="33%">
-        <img width="2650" height="3534" alt="IMG_3249" src="https://github.com/user-attachments/assets/adcb474e-68ed-4980-8110-66025d13b864" />
-        <br/>
-        <strong>Santhakumar Parivalla</strong>
-        <br/>
-        <sub>Cybersecurity Engineer</sub>
-        <br/>
-        <a href="https://github.com/SanthakumarParivallal"><img src="https://img.shields.io/badge/GitHub-Profile-181717?style=flat-square&logo=github&logoColor=white" alt="GitHub"/></a>
-        <a href="https://www.linkedin.com/in/santhakumar-parivallal-81307230a"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
-      </td>
-    </tr>
-  </table>
-</div>
-
-> *Replace the `https://github.com/` and `https://www.linkedin.com/` placeholders with each author's actual profile URLs and avatar images.*
-
-<p align="right"><a href="#table-of-contents">⬆ Back to Top</a></p>
-
----
-
-## <a id="project-summary"></a>🎯 Project Summary
-
-<p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=0:0A0A0C,25:7209b7,50:00ffcc,75:72efdd,100:00E5FF"/>
+<img src="https://capsule-render.vercel.app/api?type=rect&height=4&color=0:FF6B35,50:FFB300,100:00D4AA"/>
 </p>
 
 **Aegis-IAM Dashboard** is an enterprise-grade IAM risk-analysis HUD built for blue teams who need a fast, visual second-opinion on real-world identity exports — without standing up a full data pipeline.
@@ -138,20 +135,35 @@ Drop in any AWS `aws iam get-account-authorization-details` JSON and the engine 
 
 The entire HUD is single-binary Flask + Jinja with a Tailwind CDN frontend. No build step. No database. No cloud dependency.
 
-<p align="right"><a href="#table-of-contents">⬆ Back to Top</a></p>
+<div align="center">
+
+| Metric | Value |
+|---|---|
+| 🗺️ **MITRE Verbs Mapped** | 57 distinct IAM/STS verbs |
+| 🎯 **Tactics Covered** | 10 / 10 ATT&CK Enterprise tactics |
+| 🧪 **Test Coverage** | 38/38 E2E · 11/11 adversarial security tests |
+| ☁️ **Cloud Support** | AWS · Azure · GCP |
+| 🏗️ **Backend** | Flask 3.0 · NetworkX 3.2 · Python 3.9+ |
+| 🎨 **Frontend** | Tailwind CDN · Chart.js · vis-network · html2pdf |
+| 🔒 **Security Controls** | CSRF · CSP · rate-limiting · XSS-tested · JSON bomb guard |
+| 📦 **Deployment** | Gunicorn · Docker · Render / Railway / Heroku compatible |
+| 📄 **No Build Step** | No webpack · no npm · no database · runs offline |
+
+</div>
 
 ---
 
-## <a id="core-idea"></a>💡 Core Idea
+<a id="core-idea"></a>
+## 💡 Core Idea
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=0:0A0A0C,25:7209b7,50:00ffcc,75:72efdd,100:00E5FF"/>
+<img src="https://capsule-render.vercel.app/api?type=rect&height=4&color=0:FFB300,50:FF3EA5,100:B388FF"/>
 </p>
 
 Most cloud security tools are heavy: agents, ingestion pipelines, query languages, paid SaaS dashboards. The **first 5 minutes of incident-response triage** rarely needs any of that — the responder just wants to point at an IAM JSON dump and ask:
 
 <div align="center">
-  
+
 | Question | Aegis Answer |
 |---|---|
 | Who can become admin from where? | **Privilege Escalation Chains** module |
@@ -165,14 +177,13 @@ Most cloud security tools are heavy: agents, ingestion pipelines, query language
 
 Aegis treats the IAM export as the **only source of truth** for a single shot of analysis. Stateless, self-contained, runs offline. Useful as a SOC analyst's pocket scanner, an interview takehome, a security-class lab, or a quick Friday-afternoon audit.
 
-<p align="right"><a href="#table-of-contents">⬆ Back to Top</a></p>
-
 ---
 
-## <a id="complete-pipeline"></a>🔁 Complete Pipeline
+<a id="complete-pipeline"></a>
+## 🔁 Complete Pipeline
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=0:0A0A0C,25:7209b7,50:00ffcc,75:72efdd,100:00E5FF"/>
+<img src="https://capsule-render.vercel.app/api?type=rect&height=4&color=0:00D4AA,50:FF6B35,100:FFB300"/>
 </p>
 
 ```
@@ -203,18 +214,17 @@ Aegis treats the IAM export as the **only source of truth** for a single shot of
 └──────────────────┘    └─────────────────┘    └────────────────────┘    └──────────────────┘
 ```
 
-<p align="right"><a href="#table-of-contents">⬆ Back to Top</a></p>
-
 ---
 
-## <a id="key-features"></a>✨ Key Features
+<a id="key-features"></a>
+## ✨ Key Features
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=0:0A0A0C,25:7209b7,50:00ffcc,75:72efdd,100:00E5FF"/>
+<img src="https://capsule-render.vercel.app/api?type=rect&height=4&color=0:B388FF,25:FF6B35,50:FFB300,75:00D4AA,100:FF3EA5"/>
 </p>
 
 <div align="center">
-  
+
 | Module | Capability |
 |---|---|
 | 🎯 **Posture Score Engine** | 0–100 composite score with letter grade (A+ → F) and transparent factor breakdown. Animated SVG ring fills proportional to score. |
@@ -233,14 +243,13 @@ Aegis treats the IAM export as the **only source of truth** for a single shot of
 
 </div>
 
-<p align="right"><a href="#table-of-contents">⬆ Back to Top</a></p>
-
 ---
 
-## <a id="mitre-coverage"></a>🗺️ MITRE ATT&CK Coverage
+<a id="mitre-coverage"></a>
+## 🗺️ MITRE ATT&CK Coverage
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=0:0A0A0C,25:7209b7,50:00ffcc,75:72efdd,100:00E5FF"/>
+<img src="https://capsule-render.vercel.app/api?type=rect&height=4&color=0:FF6B35,50:B388FF,100:00D4AA"/>
 </p>
 
 Every IAM/STS verb in the map is tagged with one or more ATT&CK tactics. Compound tactics (e.g. `Lateral Movement / Privilege Escalation / Persistence`) decompose across all matching tactic columns in the heatmap.
@@ -264,14 +273,13 @@ Every IAM/STS verb in the map is tagged with one or more ATT&CK tactics. Compoun
 
 </div>
 
-<p align="right"><a href="#table-of-contents">⬆ Back to Top</a></p>
-
 ---
 
-## <a id="posture-engine"></a>📊 Posture Scoring Engine
+<a id="posture-engine"></a>
+## 📊 Posture Scoring Engine
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=0:0A0A0C,25:7209b7,50:00ffcc,75:72efdd,100:00E5FF"/>
+<img src="https://capsule-render.vercel.app/api?type=rect&height=4&color=0:FFB300,50:FF3EA5,100:FF6B35"/>
 </p>
 
 Posture Score is a transparent, deterministic composite. Score starts at **100** and each detected risk subtracts a weighted delta:
@@ -304,14 +312,13 @@ Final score is floored at zero. Each contributing factor surfaces in the *Postur
 
 </div>
 
-<p align="right"><a href="#table-of-contents">⬆ Back to Top</a></p>
-
 ---
 
-## <a id="dashboard-modules"></a>🖥️ Dashboard Modules
+<a id="dashboard-modules"></a>
+## 🖥️ Dashboard Modules
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=0:0A0A0C,25:7209b7,50:00ffcc,75:72efdd,100:00E5FF"/>
+<img src="https://capsule-render.vercel.app/api?type=rect&height=4&color=0:00D4AA,50:B388FF,100:FF6B35"/>
 </p>
 
 <div align="center">
@@ -331,14 +338,13 @@ Final score is floored at zero. Each contributing factor surfaces in the *Postur
 
 Plus secondary views: **Trust Graph** (vis-network), **Dynamic Playbook** (per-finding remediation), **Intel Retrieval Lab** (cloud export instructions).
 
-<p align="right"><a href="#table-of-contents">⬆ Back to Top</a></p>
-
 ---
 
-## <a id="tech-stack"></a>⚡ Tech Stack
+<a id="tech-stack"></a>
+## ⚡ Tech Stack
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=0:0A0A0C,25:7209b7,50:00ffcc,75:72efdd,100:00E5FF"/>
+<img src="https://capsule-render.vercel.app/api?type=rect&height=4&color=0:FF6B35,25:FFB300,50:00D4AA,75:B388FF,100:FF3EA5"/>
 </p>
 
 <div align="center">
@@ -354,18 +360,17 @@ Plus secondary views: **Trust Graph** (vis-network), **Dynamic Playbook** (per-f
 
 </div>
 
-<p align="right"><a href="#table-of-contents">⬆ Back to Top</a></p>
-
 ---
 
-## <a id="api-endpoints"></a>🌐 API Endpoints
+<a id="api-endpoints"></a>
+## 🌐 API Endpoints
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=0:0A0A0C,25:7209b7,50:00ffcc,75:72efdd,100:00E5FF"/>
+<img src="https://capsule-render.vercel.app/api?type=rect&height=4&color=0:B388FF,50:FF6B35,100:00D4AA"/>
 </p>
 
 <div align="center">
-  
+
 | Route | Method | Purpose |
 |---|:---:|---|
 | `/` | GET | Main HUD |
@@ -379,19 +384,18 @@ Plus secondary views: **Trust Graph** (vis-network), **Dynamic Playbook** (per-f
 | `/api/export/csv` | GET | Flat CSV of all findings |
 
 </div>
-  
-<p align="right"><a href="#table-of-contents">⬆ Back to Top</a></p>
 
 ---
 
-## <a id="keyboard-shortcuts"></a>⌨️ Keyboard Shortcuts
+<a id="keyboard-shortcuts"></a>
+## ⌨️ Keyboard Shortcuts
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=0:0A0A0C,25:7209b7,50:00ffcc,75:72efdd,100:00E5FF"/>
+<img src="https://capsule-render.vercel.app/api?type=rect&height=4&color=0:FFB300,50:FF3EA5,100:B388FF"/>
 </p>
 
 <div align="center">
-  
+
 | Key | Action |
 |:---:|---|
 | `Ctrl/Cmd + K` | Open command palette |
@@ -400,59 +404,64 @@ Plus secondary views: **Trust Graph** (vis-network), **Dynamic Playbook** (per-f
 | `Esc` | Close palette / drawer |
 
 </div>
-  
-<p align="right"><a href="#table-of-contents">⬆ Back to Top</a></p>
 
 ---
 
-## <a id="project-structure"></a>📁 Project Structure
+<a id="project-structure"></a>
+## 📁 Project Structure
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=0:0A0A0C,25:7209b7,50:00ffcc,75:72efdd,100:00E5FF"/>
+<img src="https://capsule-render.vercel.app/api?type=rect&height=4&color=0:00D4AA,50:FF6B35,100:FFB300"/>
 </p>
 
 ```
 Cyber-Security-Aegis-IAM-Dashboard/
-├── app.py                          # Flask backend, ingestion, analysis, scoring, exports
-├── mitre_map.json                  # Permission → MITRE technique map (57 entries)
-├── requirements.txt                # Python dependencies
-├── README.md                       # You are here
-├── data/
-│   ├── demo_aws_auth_details.json  # Demo dataset (Initialize Simulation)
-│   └── sample_aws_realworld.json   # Realistic AWS test fixture (5 users, 4 roles)
-├── static/
-│   ├── css/hud.css                 # Cyberpunk component layer (920 lines)
-│   └── js/hud.js                   # Particles, drawer, palette, toasts, charts (655 lines)
-├── templates/
-│   ├── base.html                   # Tailwind CDN, fonts, particles, overlay containers
-│   ├── index.html                  # Main HUD (posture, heatmap, stats, findings)
-│   ├── graph.html                  # vis-network IAM relationship graph
-│   ├── playbook.html               # Per-finding remediation playbooks
-│   └── intel_lab.html              # AWS / Azure / GCP export instructions
-└── uploads/                        # Runtime: user-uploaded JSON (auto-cleaned)
+│
+├── 🐍 app.py                          ← Flask backend — ingestion · analysis · scoring · exports
+├── 🗺️ mitre_map.json                  ← Permission → MITRE technique map (57 entries)
+├── 📋 requirements.txt                ← Python dependencies
+├── 📖 README.md                       ← You are here
+│
+├── 📊 data/
+│   ├── demo_aws_auth_details.json     ← Demo dataset (Initialize Simulation)
+│   └── sample_aws_realworld.json      ← Realistic AWS fixture (5 users · 4 roles)
+│
+├── 🎨 static/
+│   ├── css/hud.css                    ← Cyberpunk component layer (920 lines)
+│   └── js/hud.js                      ← Particles · drawer · palette · toasts · charts (655 lines)
+│
+├── 🖼️ templates/
+│   ├── base.html                      ← Tailwind CDN · fonts · particles · overlay containers
+│   ├── index.html                     ← Main HUD (posture · heatmap · stats · findings)
+│   ├── graph.html                     ← vis-network IAM relationship graph
+│   ├── playbook.html                  ← Per-finding remediation playbooks
+│   └── intel_lab.html                 ← AWS / Azure / GCP export instructions
+│
+└── 📁 uploads/                        ← Runtime: user-uploaded JSON (auto-cleaned)
 ```
-
-<p align="right"><a href="#table-of-contents">⬆ Back to Top</a></p>
 
 ---
 
-## <a id="installation"></a>⚙️ Installation
+<a id="installation"></a>
+## ⚙️ Installation
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=0:0A0A0C,25:7209b7,50:00ffcc,75:72efdd,100:00E5FF"/>
+<img src="https://capsule-render.vercel.app/api?type=rect&height=4&color=0:FF3EA5,50:00D4AA,100:FFB300"/>
 </p>
 
 ### Prerequisites
 
-- Python **3.9+**
-- pip
-- A modern browser (Chrome 111+, Firefox 113+, Safari 16.2+, Edge 111+)
+```bash
+Python 3.9+
+pip
+A modern browser (Chrome 111+ · Firefox 113+ · Safari 16.2+ · Edge 111+)
+```
 
 ### Quick Start
 
 ```bash
 # 1. Clone
-git clone https://github.com/YOUR-USERNAME/Cyber-Security-Aegis-IAM-Dashboard.git
+git clone https://github.com/nishu2402/Cyber-Security-Aegis-IAM-Dashboard.git
 cd Cyber-Security-Aegis-IAM-Dashboard
 
 # 2. Virtual environment
@@ -470,24 +479,35 @@ pip install -r requirements.txt
 python app.py
 ```
 
-Open **<http://127.0.0.1:5000>** in your browser.
+Open **http://127.0.0.1:5000** in your browser.
 
-<p align="right"><a href="#table-of-contents">⬆ Back to Top</a></p>
+<details>
+<summary>📋 Full requirements.txt</summary>
+
+```
+flask>=3.0.0
+werkzeug>=3.0.0
+networkx>=3.2
+gunicorn>=21.2.0
+```
+
+</details>
 
 ---
 
-## <a id="usage-guide"></a>🚀 Usage Guide
+<a id="usage-guide"></a>
+## 🚀 Usage Guide
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=0:0A0A0C,25:7209b7,50:00ffcc,75:72efdd,100:00E5FF"/>
+<img src="https://capsule-render.vercel.app/api?type=rect&height=4&color=0:FF6B35,50:B388FF,100:FF3EA5"/>
 </p>
 
-### 1 Pre-Built Simulations (Instant Demos)
+### 1 — Pre-Built Simulations (Instant Demos)
 
 The dashboard ships with **7 pre-built simulation scenarios**. Click any card in the *Simulation Library* section to load it instantly.
 
 <div align="center">
-  
+
 | Scenario | Severity | What It Models |
 |---|:---:|---|
 | 🟢 **Quick Demo** | Low | Minimal AWS export — single escalation, ideal first look |
@@ -500,7 +520,7 @@ The dashboard ships with **7 pre-built simulation scenarios**. Click any card in
 
 </div>
 
-### 2 Upload a Real AWS Export
+### 2 — Upload a Real AWS Export
 
 ```bash
 # Generate the export
@@ -512,20 +532,20 @@ Then click **+ Choose JSON (auto-uploads)** in the dashboard. The HUD repaints a
 
 A bundled real-world fixture lives at `data/sample_aws_realworld.json` for offline testing — five users, four roles, three groups, federated SAML trust, NotAction wildcard, cross-account assume-role.
 
-### 3 Other Cloud Exports
+### 3 — Other Cloud Exports
 
 <div align="center">
-  
+
 | Cloud | Export Command |
 |---|---|
 | **Azure** | `az role assignment list --all --output json > azure_iam.json` |
 | **GCP** | `gcloud projects get-iam-policy PROJECT_ID --format=json > gcp_iam.json` |
 
 </div>
-  
+
 (See *Intel Retrieval Lab* in the dashboard for full reference.)
 
-### 4 Generate an Intelligence Report
+### 4 — Generate an Intelligence Report
 
 Click **Export PDF** for a branded dark-mode report. Or pull raw findings via:
 
@@ -534,14 +554,13 @@ curl http://127.0.0.1:5000/api/export/json   > findings.json
 curl http://127.0.0.1:5000/api/export/csv    > findings.csv
 ```
 
-<p align="right"><a href="#table-of-contents">⬆ Back to Top</a></p>
-
 ---
 
-## <a id="deployment"></a>☁️ Deployment
+<a id="deployment"></a>
+## ☁️ Deployment
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=0:0A0A0C,25:7209b7,50:00ffcc,75:72efdd,100:00E5FF"/>
+<img src="https://capsule-render.vercel.app/api?type=rect&height=4&color=0:00D4AA,50:FFB300,100:FF6B35"/>
 </p>
 
 The app is a standard WSGI Flask application — runs anywhere Python runs.
@@ -551,10 +570,6 @@ The app is a standard WSGI Flask application — runs anywhere Python runs.
 ```bash
 # Procfile
 web: gunicorn app:app
-```
-
-```bash
-echo "gunicorn==21.2.0" >> requirements.txt
 ```
 
 Set environment variable `AEGIS_SECRET_KEY` to a long random string in production.
@@ -577,14 +592,13 @@ docker build -t aegis-iam .
 docker run -p 5000:5000 -e AEGIS_SECRET_KEY=$(openssl rand -hex 32) aegis-iam
 ```
 
-<p align="right"><a href="#table-of-contents">⬆ Back to Top</a></p>
-
 ---
 
-## <a id="security-notes"></a>🔒 Security Notes
+<a id="security-notes"></a>
+## 🔒 Security Notes
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=0:0A0A0C,25:7209b7,50:00ffcc,75:72efdd,100:00E5FF"/>
+<img src="https://capsule-render.vercel.app/api?type=rect&height=4&color=0:FF3EA5,50:B388FF,100:00D4AA"/>
 </p>
 
 <div align="center">
@@ -610,21 +624,20 @@ docker run -p 5000:5000 -e AEGIS_SECRET_KEY=$(openssl rand -hex 32) aegis-iam
 
 > ⚠️ Use **only in authorized environments** — for blue-team analysis of your own organization's IAM exports.
 
-<p align="right"><a href="#table-of-contents">⬆ Back to Top</a></p>
-
 ---
 
-## <a id="test-coverage"></a>🧪 Verified Test Coverage
+<a id="test-coverage"></a>
+## 🧪 Verified Test Coverage
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=0:0A0A0C,25:7209b7,50:00ffcc,75:72efdd,100:00E5FF"/>
+<img src="https://capsule-render.vercel.app/api?type=rect&height=4&color=0:FFB300,50:FF6B35,100:B388FF"/>
 </p>
 
 | Test | Result |
 |---|:---:|
-| ✅ Demo dataset (simple AWS schema) | 1 escalation, 1 over-priv, 0 conflicts, 3 fired tactics |
-| ✅ Realistic AWS dataset | 4 escalations, 5 over-priv, 1 conflict, **7/10 ATT&CK tactics fired**, 34 unique technique cells |
-| ✅ Empty model | Posture 100 / A+, all 10 heatmap rows render cold |
+| ✅ Demo dataset (simple AWS schema) | 1 escalation · 1 over-priv · 0 conflicts · 3 fired tactics |
+| ✅ Realistic AWS dataset | 4 escalations · 5 over-priv · 1 conflict · **7/10 ATT&CK tactics fired** · 34 unique technique cells |
+| ✅ Empty model | Posture 100 / A+ · all 10 heatmap rows render cold |
 | ✅ Posture floor | 1000 critical findings → score 0 / F |
 | ✅ XSS injection | `<script>alert(1)</script>` principal name fully escaped in render |
 | ✅ Malformed JSON upload | Rejected with flash error |
@@ -637,42 +650,42 @@ docker run -p 5000:5000 -e AEGIS_SECRET_KEY=$(openssl rand -hex 32) aegis-iam
 | ✅ CSRF token validation | All POSTs blocked without valid token |
 | ✅ Heatmap aggregates ALL principals | Surface-area complete (Bug #1 fix) |
 | ✅ Auto-upload on file pick | Single-action UX (Bug #2 fix) |
-| ✅ All routes return 200/302 | `/`, `/upload`, `/init_demo`, `/reset`, `/graph`, `/playbook`, `/intel`, `/api/export/json`, `/api/export/csv` |
+| ✅ All routes return 200/302 | `/` · `/upload` · `/init_demo` · `/reset` · `/graph` · `/playbook` · `/intel` · `/api/export/json` · `/api/export/csv` |
 | ✅ All security headers present | X-Frame-Options · CSP · HSTS · COOP · Permissions-Policy · Referrer-Policy · X-XSS-Protection |
 | ✅ Cookie hardening | HttpOnly + SameSite=Lax + Secure (when `AEGIS_FORCE_HTTPS=1`) |
-| ✅ Static lint | Python compile clean, JS `node --check` clean, all JSON parsable |
+| ✅ Static lint | Python compile clean · JS `node --check` clean · all JSON parsable |
 | ✅ Final E2E | **38/38 PASS · 0 FAIL** |
 | ✅ Adversarial security tests | **11/11 PASS · 0 FAIL** |
 
-<p align="right"><a href="#table-of-contents">⬆ Back to Top</a></p>
-
 ---
 
-## <a id="future-roadmap"></a>🛣️ Future Roadmap
+<a id="future-roadmap"></a>
+## 🛣️ Future Roadmap
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=0:0A0A0C,25:7209b7,50:00ffcc,75:72efdd,100:00E5FF"/>
+<img src="https://capsule-render.vercel.app/api?type=rect&height=4&color=0:B388FF,33:FF3EA5,66:FFB300,100:00D4AA"/>
 </p>
 
-- 🔌 **Native Azure RBAC ingestion** — parse `az role assignment list` directly without normalization shims.
-- 🧬 **Native GCP IAM ingestion** — full `gcloud projects get-iam-policy` schema support.
-- 🧠 **Behavioral baseline mode** — diff today's export against a saved snapshot to detect privilege drift over time.
-- 🔁 **CI/CD GitHub Action** — auto-fail PRs that introduce a Posture grade regression.
-- 🪝 **CloudTrail integration** — attach the last 30 days of CloudTrail events to each finding.
-- 🤝 **OPA / Rego policy export** — generate guardrail policies directly from detected over-priv findings.
-- 🧪 **pytest test suite** — convert the manual smoke harness into reproducible CI tests.
-- 🌍 **i18n** — UI string extraction for non-English deployments.
-- 📦 **Helm chart** — first-class Kubernetes deployment.
-- 🔐 **OIDC SSO gating** — protect the dashboard behind enterprise identity.
-
-<p align="right"><a href="#table-of-contents">⬆ Back to Top</a></p>
+| Priority | Improvement | Expected Impact |
+|---|---|---|
+| 🔴 HIGH | **Native Azure RBAC Ingestion** — parse `az role assignment list` directly without normalization shims | Full Azure IAM analysis without pre-conversion |
+| 🔴 HIGH | **Native GCP IAM Ingestion** — full `gcloud projects get-iam-policy` schema support | Multi-cloud parity for GCP environments |
+| 🟠 MED | **Behavioral Baseline Mode** — diff today's export against a saved snapshot | Detect privilege drift over time — essential for continuous compliance |
+| 🟠 MED | **CI/CD GitHub Action** — auto-fail PRs that introduce a posture grade regression | Shift-left IAM security into the developer workflow |
+| 🟠 MED | **CloudTrail Integration** — attach the last 30 days of events to each finding | Evidence-backed escalation chains — not just policy analysis |
+| 🟡 LOW | **OPA / Rego Policy Export** — generate guardrail policies from detected over-priv findings | Auto-remediation guardrails as code |
+| 🟡 LOW | **pytest Test Suite** — convert manual smoke harness into reproducible CI tests | Automated regression testing on every commit |
+| 🟡 LOW | **Helm Chart** — first-class Kubernetes deployment | Enterprise-grade orchestrated deployment |
+| 🟡 LOW | **OIDC SSO Gating** — protect the dashboard behind enterprise identity | Production-grade auth for shared SOC environments |
+| 🟡 LOW | **i18n** — UI string extraction for non-English deployments | Global blue-team accessibility |
 
 ---
 
-## <a id="disclaimer"></a>⚠️ Disclaimer
+<a id="disclaimer"></a>
+## ⚠️ Disclaimer
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=0:0A0A0C,25:7209b7,50:00ffcc,75:72efdd,100:00E5FF"/>
+<img src="https://capsule-render.vercel.app/api?type=rect&height=4&color=0:FF6B35,50:FFB300,100:FF6B35"/>
 </p>
 
 > **Aegis-IAM Dashboard** is a defensive blue-team analysis tool. It is intended **exclusively for use on IAM exports from systems you own or are explicitly authorized to assess.** The authors, maintainers, and contributors accept no liability for misuse.
@@ -681,37 +694,34 @@ docker run -p 5000:5000 -e AEGIS_SECRET_KEY=$(openssl rand -hex 32) aegis-iam
 >
 > All trademarks (AWS, MITRE ATT&CK, Azure, GCP, etc.) belong to their respective owners.
 
-<p align="right"><a href="#table-of-contents">⬆ Back to Top</a></p>
-
 ---
 
-## <a id="license"></a>📜 License
+<a id="license"></a>
+## 📜 License
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=rect&height=6&color=0:0A0A0C,25:7209b7,50:00ffcc,75:72efdd,100:00E5FF"/>
+<img src="https://capsule-render.vercel.app/api?type=rect&height=4&color=0:00D4AA,50:B388FF,100:FF3EA5"/>
 </p>
 
 Distributed under the **MIT License**. See `LICENSE` for full text.
 
 ```
-Owned and Developed by Nisarg Chasmawala (Shroff), Jatin Kumar, and Santhakumar Parivalla.
+Owned and Developed by Nisarg Chasmawala (HEAVEN), Jatin Kumar, and Santhakumar Parivalla.
 © 2026 All Rights Reserved.
 ```
-
-<p align="right"><a href="#table-of-contents">⬆ Back to Top</a></p>
 
 ---
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&height=140&color=0:0A0A0C,100:00E5FF&amp&section=footer&text=Stay%20Hardened&fontSize=28&fontColor=ffffff&fontAlignY=72"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&height=200&color=0:05070F,20:0D0A00,40:2D1500,60:6B3200,80:FF6B35,100:05070F&section=footer&text=Made%20with%20%F0%9F%94%90%20by%20Nisarg%20%C2%B7%20Jatin%20%C2%B7%20Santhakumar&fontSize=22&fontAlignY=65&fontColor=FF6B35&animation=twinkling"/>
 </p>
 
 <p align="center">
-  <strong>If this project helped you, give it a ⭐ — it genuinely helps.</strong>
+<strong>⭐ If this project helped you, give it a star — it genuinely helps.</strong>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/github/stars/nishu2402/Cyber-Security-Aegis-IAM-Dashboard?style=social" alt="Stars"/>
-  <img src="https://img.shields.io/github/forks/nishu2402/Cyber-Security-Aegis-IAM-Dashboard?style=social" alt="Forks"/>
-  <img src="https://img.shields.io/github/watchers/nishu2402/Cyber-Security-Aegis-IAM-Dashboard?style=social" alt="Watchers"/>
+<img src="https://img.shields.io/github/stars/nishu2402/Cyber-Security-Aegis-IAM-Dashboard?style=social" alt="Stars"/>
+<img src="https://img.shields.io/github/forks/nishu2402/Cyber-Security-Aegis-IAM-Dashboard?style=social" alt="Forks"/>
+<img src="https://img.shields.io/github/watchers/nishu2402/Cyber-Security-Aegis-IAM-Dashboard?style=social" alt="Watchers"/>
 </p>
