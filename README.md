@@ -46,30 +46,30 @@
 ## 👾 Authors
 
 <p align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&height=4&color=0:FF6B35,50:00D4AA,100:B388FF"/>
+<img src="https://capsule-render.vercel.app/api?type=rect&height=4&color=0:2DE2E6,50:9D00FF,100:E94560"/>
 </p>
 
 <div align="center">
   <table>
     <tr>
       <td align="center" width="33%">
-        <img width="420" height="420" alt="Nisarg" src="https://github.com/user-attachments/assets/8de9e0f9-4c1c-407b-8041-9bf67596e040" />
+        <img width="6067" height="7800" alt="Nisarg’s photo" src="https://github.com/user-attachments/assets/a6048e99-7938-46de-a4aa-e31ee923d581" />
         <br/>
         <strong>Nisarg Chasmawala · HEAVEN</strong>
         <br/>
         <sub>Pen-Tester / Cybersecurity Engineer</sub>
         <br/>
-        <a href="https://github.com/nishu2402"><img src="https://img.shields.io/badge/GitHub-Profile-FF6B35?style=flat-square&logo=github&logoColor=white" alt="GitHub"/></a>
+        <a href="https://github.com/nishu2402"><img src="https://img.shields.io/badge/GitHub-Profile-2DE2E6?style=flat-square&logo=github&logoColor=black" alt="GitHub"/></a>
         <a href="https://www.linkedin.com/in/nisarg-chasmawala"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
       </td>
       <td align="center" width="33%">
-        <img width="420" height="560" alt="Jatin" src="https://github.com/user-attachments/assets/b819a47b-0460-4098-b98f-4cf8b1189f9a" />
+        <img width="3024" height="4032" alt="IMG_3334" src="https://github.com/user-attachments/assets/64bad5eb-3cbf-431f-a165-cc294745b3ca" />
         <br/>
         <strong>Jatin Kumar</strong>
         <br/>
         <sub>Cybersecurity & Full-Stack Engineer</sub>
         <br/>
-        <a href="https://github.com/Jatinkumar78"><img src="https://img.shields.io/badge/GitHub-Profile-FF6B35?style=flat-square&logo=github&logoColor=white" alt="GitHub"/></a>
+        <a href="https://github.com/Jatinkumar78"><img src="https://img.shields.io/badge/GitHub-Profile-2DE2E6?style=flat-square&logo=github&logoColor=black" alt="GitHub"/></a>
         <a href="https://www.linkedin.com/in/jatinkumar78"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
       </td>
       <td align="center" width="33%">
@@ -79,12 +79,13 @@
         <br/>
         <sub>Cybersecurity Engineer</sub>
         <br/>
-        <a href="https://github.com/SanthakumarParivallal"><img src="https://img.shields.io/badge/GitHub-Profile-FF6B35?style=flat-square&logo=github&logoColor=white" alt="GitHub"/></a>
+        <a href="https://github.com/SanthakumarParivallal"><img src="https://img.shields.io/badge/GitHub-Profile-2DE2E6?style=flat-square&logo=github&logoColor=black" alt="GitHub"/></a>
         <a href="https://www.linkedin.com/in/santhakumar-parivallal-81307230a"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
       </td>
     </tr>
   </table>
 </div>
+
 
 ---
 
